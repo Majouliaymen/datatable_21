@@ -1,0 +1,135 @@
+forum_homepage:
+    path:     /Forum
+    defaults: { _controller: ForumBundle:Default:index }
+
+gerer_publication:
+    path:     /gerer_publication
+    defaults: { _controller: ForumBundle:Admin:Gererpublication}
+
+gerer_location_publication:
+    path:     /gerer_publication/{id_pub}/{action}
+    defaults: { _controller: ForumBundle:Admin:ActionPublication}
+
+gerer_reponse:
+    path:     /gerer_reponse
+    defaults: { _controller: ForumBundle:Admin:Gererreponse}
+
+update_categorie:
+    path:     /gerer_categorie/update/{id}/{type_select}
+    defaults: { _controller: ForumBundle:Admin:updatecategorie}
+
+gerer_categories:
+        path:     /gerer_categories
+        defaults: { _controller: ForumBundle:Admin:Gerercategories}
+
+gerer_supprimer_categories:
+        path:     /gerer_categories/supprimer/{id}/{type_select}
+        defaults: { _controller: ForumBundle:Admin:GererSupprimercategories}
+
+mes_publication:
+        path:     /mes_publication
+        defaults: { _controller: ForumBundle:Auteur:Mespublications}
+
+update_publication:
+        path:     /mes_publication/update/{id}
+        defaults: { _controller: ForumBundle:Auteur:Mespublicationupdates}
+
+supprimer_publication:
+        path:     /supprimer_publication/{id_publication}
+        defaults: { _controller: ForumBundle:Auteur:Supprimerpublication}
+
+publication_resolu:
+        path:     /publicationresolu/{id_publication}/{id_reponse}
+        defaults: { _controller: ForumBundle:Auteur:publicationresolu}
+
+supprimer_publication_resolu:
+        path:     /supprimerpublicationresolu/{id_publication_resolu}/{id_pub}
+        defaults: { _controller: ForumBundle:Auteur:supprimerpublicationresolu}
+
+categorie_index:
+        path:     /forum
+        defaults: { _controller: ForumBundle:Categorie:index}
+
+categorie_new:
+        path:     /forum/new
+        defaults: { _controller: ForumBundle:Categorie:new}
+
+categorie_show:
+        path:     /forum/{id}
+        defaults: { _controller: ForumBundle:Categorie:show}
+
+categorie_edit:
+        path:     /forum/{id}/edit
+        defaults: { _controller: ForumBundle:Categorie:edit}
+
+categorie_delete:
+        path:     /forum/{id}/delete
+        defaults: { _controller: ForumBundle:Categorie:delete}
+
+consulter_forum:
+        path:     /consulter_forum
+        defaults: { _controller: ForumBundle:Forum:consulter_forum}
+
+consulter_publicationforum:
+        path:     /consulter_forum/consulter_publication/{id_publication}
+        defaults: { _controller: ForumBundle:Forum:Consulter_publicationforum}
+
+donneravis:
+        path:     /consulter_forum/consulter_publication/avis/{id_reponse}/{avis}
+        defaults: { _controller: ForumBundle:Forum:DonnerAvisreponse}
+
+supprimer_reponse:
+        path:     /consulter_forum/consulter_publication/supprimer_reponse/{id_reponse}/{id_p}
+        defaults: { _controller: ForumBundle:Forum:Supprimerreponse}
+
+modifier_reponse:
+                path:     /consulter_forum/consulter_publication/modifier_reponse/{id_reponse}
+                defaults: { _controller: ForumBundle:Forum:Modifierreponse}
+
+consulter_pub_rep:
+        path:     /forum/affiche/{type}/{id}
+        defaults: { _controller: ForumBundle:Forum:Consulter_pubrep}
+
+consulter_categorieforum:
+        path:     /consulter_categorieforum/{typecat}/{typeaff}/{id_cat}
+        defaults: { _controller: ForumBundle:Forum:Consulter_categorieforum}
+
+publication_index:
+        path:     /f
+        defaults: { _controller: ForumBundle:Publication:index}
+
+publication_new:
+        path:     /f/new
+        defaults: { _controller: ForumBundle:Publication:new}
+
+publication_show:
+        path:     /f/{id}
+        defaults: { _controller: ForumBundle:Publication:show}
+
+publication_edit:
+        path:     /f/{edit}
+        defaults: { _controller: ForumBundle:Publication:edit}
+
+publication_delete:
+        path:     /f/{id}
+        defaults: { _controller: ForumBundle:Publication:delete}
+
+bawwwwwwwwwwwwwww:
+        path:     /aaaa
+        defaults: { _controller: ForumBundle:Auteur:statforum}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

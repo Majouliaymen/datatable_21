@@ -1,0 +1,125 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <link href="{{ asset('https://fonts.googleapis.com/icon?family=Material+Icons') }}" rel="stylesheet">
+    <link href="{{asset('css/style32.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/default32.css')}}" id="option_color">
+    <br>
+    {{ form_start(form) }}
+    <div class="container">
+        <div class="col-sm-8">
+
+            <div class="panel panel-default checkoutInfo">
+                <div class="panel-heading bg-color-3 border-color-3">
+                    <h3 class="panel-title">Ajouter offres</h3>
+
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="col-sm-6 col-xs-12">
+                            <label for="">Nom</label>
+                            {{ form_widget(form.nom) }}
+                            {#<input type="text" class="form-control border-color-1" id="">#}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-6 col-xs-12">
+                            <label for="">Prenom</label>
+                            {{ form_widget(form.prenom) }}
+                            {#<input type="text" class="form-control border-color-1" id="">#}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-6 col-xs-12">
+                            <label for="">prix </label>
+                            {{ form_widget(form.prix    ) }}
+                            {#<input type="text" class="form-control border-color-1" id="">#}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-6 col-xs-12">
+                            <label for="">Adresse</label>
+
+                            {{ form_widget(form.adrese) }}
+                            {#<input type="text" class="form-control border-color-1" id="">#}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-6 col-xs-12">
+                            <label for="">Email</label>
+                            {{ form_widget(form.email) }}
+                            {#<input type="text" class="form-control border-color-1" id="">#}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-6 col-xs-12">
+                            <label for="">Image</label>
+                            {{ form_widget(form.image) }}
+                            {#<input type="text" class="form-control border-color-1" id="">#}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <label for="">Description</label>
+                            {{ form_widget(form.description) }}
+                            {#<input type="text" class="form-control border-color-1" id="">#}
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+
+
+                        <div class='col-md-5'>
+                            <div class="form-group">
+                                <div class='input-group date' id='datetimepicker6'>
+                                    <input type='text' class="form-control" name="disponibilite"  data-date-format="DD-MM-YYYY" />
+                                    <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='col-md-5'>
+                            <div class="form-group">
+                                <div class='input-group date' id='datetimepicker7'>
+                                    <input type='text' class="form-control" name="datefin" data-date-format="DD-MM-YYYY"/>
+                                    <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+                                </div>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            $(function () {
+                                $('#datetimepicker6').datetimepicker();
+                                $('#datetimepicker7').datetimepicker({
+                                    useCurrent: false //Important! See issue #1075
+                                });
+                                $("#datetimepicker6").on("dp.change", function (e) {
+                                    $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+                                });
+                                $("#datetimepicker7").on("dp.change", function (e) {
+                                    $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+                                });
+                            });
+                        </script>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-6 col-xs-12">
+                            <label for=""></label>
+                            {{ form_widget(form.save) }}
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ form_end(form) }}
+
+
+{% endblock %}

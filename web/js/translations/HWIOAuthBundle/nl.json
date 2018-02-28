@@ -1,0 +1,3 @@
+{
+    "translations": {"nl":{"HWIOAuthBundle":{"header.connecting":"Koppelen","header.success":"De account \"%name%\" is gekoppeld!","header.register":"Registreer met de account \"%name%\"","header.registration_success":"De account \"%username%\" is succesvol geregistreerd en gekoppeld!","connect.confirm.cancel":"Annuleren","connect.confirm.submit":"Account koppelen","connect.confirm.text":"Weet je zeker dat je je %service% account \"%name%\" aan je huidige account wil koppelen?","connect.registration.cancel":"Annuleren","connect.registration.submit":"Registeer account"}}}
+}

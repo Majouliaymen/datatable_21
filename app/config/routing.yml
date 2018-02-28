@@ -1,0 +1,43 @@
+admin:
+    resource: "@AdminBundle/Resources/config/routing.yml"
+    prefix:   /
+
+jardin:
+    resource: "@JardinBundle/Resources/config/routing.yml"
+    prefix:   /
+
+forum:
+    resource: "@ForumBundle/Resources/config/routing.yml"
+    prefix:   /home
+shop:
+    resource: "@ShopBundle/Resources/config/routing.yml"
+    prefix:   /home
+
+baby:
+    resource: "@BabyBundle/Resources/config/routing.yml"
+    prefix:   /home
+
+events:
+    resource: "@EventsBundle/Resources/config/routing.yml"
+    prefix:   /home
+
+donate:
+    resource: "@DonateBundle/Resources/config/routing.yml"
+    prefix:   /donate
+
+
+user:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+_bazinga_jstranslation:
+    resource: "@BazingaJsTranslationBundle/Resources/config/routing/routing.yml"
+
+fos_message:
+    resource: "@FOSMessageBundle/Resources/config/routing.xml"
+    prefix: /contact

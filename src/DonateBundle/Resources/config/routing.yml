@@ -1,0 +1,28 @@
+donate_homepage:
+    path:     /
+    defaults: { _controller: DonateBundle:Default:index }
+donate:
+    path:     /donate
+    defaults: { _controller: DonateBundle:Donate:Donate }
+ajoutD:
+    path:     /ajoutD
+    defaults: { _controller: DonateBundle:Donate:Ajout }
+listD:
+    path:     /listD
+    defaults: { _controller: DonateBundle:Donate:listD }
+DetailD:
+    path:     /detailD/{id}
+    defaults: { _controller: DonateBundle:Donate:DetailD }
+maprod:
+    path:     /maprod
+    defaults: { _controller: DonateBundle:Donate:maprod }
+
+suppD:
+    path:     /suppd/{{id}}
+    defaults: { _controller: DonateBundle:Donate:suppd }
+
+
+updateD:
+    path:     /update/{{id}}
+    defaults: { _controller: DonateBundle:Donate:updateD }
+

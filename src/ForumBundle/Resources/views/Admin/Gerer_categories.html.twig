@@ -1,0 +1,123 @@
+{% extends 'layout.html.twig' %}
+{% block title %} Gerer categories {% endblock %}
+{% block css %}<link rel="stylesheet" type="text/css" href="{{ asset('Forumassets/plugins/tag/tag.css') }}">{% endblock %}
+{% block content %}
+
+    <div class="main-container">    <!-- START: Main Container -->
+
+
+        <div class="content-wrap">  <!--START: Content Wrap-->
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Ajouter categorie</button>
+                    <!-- popup ajouter categorie -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog modal-lg" role="document">
+                            {{ form_start(formajout ,{'method' : 'POST'}) }}
+                            {{ form_errors(formajout) }}
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">Ajouter categorie</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="content-wrap">  <!--START: Content Wrap-->
+                                        <div class="row">
+                                            <div class="panel">
+                                                <div class="panel-body">
+                                                    <div class="form-group">
+                                                        <label for="titree">Nom</label>
+                                                        {{ form_widget(formajout.nom,{'attr': {'class': 'form-control'}}) }}
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <h4>
+                                                            <span>Catégories</span>
+                                                            <a href="#"></a>
+                                                        </h4>
+                                                        <div class="css-treeview">
+                                                            <ul>
+                                                                <li><input type="radio" id="noveau categorie" name="categorie" value="nv" /><label for="noveau categorie"><a>Nouveau categorie</a></label>
+                                                                    {% for cat in categories %}
+                                                                    {% if cat.type=='categorie'%}
+                                                                        <li><input type="radio" id="{{ cat.id }}" name="categorie" value="{{ cat.id }}" /><label for="{{ cat.id }}">{{ cat.nom }}</label>
+                                                                        </li>
+                                                                    {% endif %}
+                                                                {% endfor %}
+                                                            </ul>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!--
+                                                <div class="example example_markup">
+                                                    <h3>Tags</h3>
+                                                    <div class="bs-example">
+                                                        <input type="text" placeholder="Tags" data-role="tagsinput" />
+                                                    </div>
+                                                </div>
+                                                -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                    <button type="submit" class="btn btn-success">Ajouter</button>
+                                </div>
+                            </div>
+                            {{ form_end(formajout) }}
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-responsive">
+                                    <thead>
+                                    <tr>
+                                        <th>Categorie & Sous</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for cat in categories %}
+                                        {% if cat.type=='categorie'%}
+                                            <tr>
+                                                <td>
+                                            <li class="list-group-item"><div class="row"><label class="col-md-2 col-sm-3" for="{{ cat.id}}">{{ cat.nom }}</label>
+                                                    <form class="col-md-1 col-sm-2" method="POST" action="{{ path('update_categorie', {'id': cat.id , 'type_select' : 'categorie'} )}}"> <button class="btn btn-primary" >Modifier</button>
+                                                    </form><form class="col-md-1 col-sm-2" action="{{ path('gerer_supprimer_categories', {'id': cat.id ,'type_select' : 'categorie' }) }}" method="POST"  > <button class="btn btn-danger" name="supp">Supprimer</button></form>
+                                                </div>
+                                                <ul>
+                                                    {% for cat2 in categories %}
+                                                        {%  if cat2.idCat is not null %}
+                                                        {% if cat2.type=='sous-categorie' and cat2.idCat.id == cat.id %}
+                                                            <li class="list-group-item list-group-item-success "><div class="row"><label class="col-md-2 col-sm-3" for="{{ cat2.id}}-0">{{ cat2.nom }}</label>
+                                                                <form class="col-md-1 col-sm-2" method="POST" action="{{ path('update_categorie', { 'id':  cat2.id , 'type_select' : 'sous-categorie'}) }}"> <button class="btn btn-primary" >Modifier</button></form>
+                                                                <form class="col-md-1 col-sm-2" action="{{ path('gerer_supprimer_categories', {'id': cat2.id , 'type_select' : 'sous-categorie'}) }}" method="POST" > <button class="btn btn-danger" name="supp">Supprimer</button></form>
+                                                                </div>
+                                                            </li>
+                                                        {% endif %}
+                                                    {% endif %}
+                                                    {% endfor %}
+                                                </ul>
+                                            </li>
+                                                </td>
+                                            </tr>
+                                        {% endif %}
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>  <!-- END: Main Container -->
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('Forumassets/js/bootstrap-tagsinput.js') }}"></script>{% endblock %}

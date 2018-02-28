@@ -1,0 +1,54 @@
+shop_homepage:
+    path:     /
+    defaults: { _controller: ShopBundle:Default:layout }
+shop:
+    path:     /shop
+    defaults: { _controller: ShopBundle:Default:index }
+
+formulaire:
+    path:     /formulaire
+    defaults: { _controller: ShopBundle:Default:formulaire }
+
+gestion_boutique:
+    path:     /gestion_boutique
+    defaults: { _controller: ShopBundle:Default:gestion_boutique }
+SupprimerProduit:
+    path:     /SupprimerProduit/{id}
+    defaults: { _controller: ShopBundle:Default:SupprimerProduit}
+
+
+modifier:
+    path:     /modifier/{id}
+    defaults: { _controller: ShopBundle:Default:modifier }
+
+setSession:
+    path:     /setSession/{id}
+    defaults: { _controller: ShopBundle:Default:setProduitToSession}
+getProductById:
+    path:     /getProduct/{id}
+    defaults: { _controller: ShopBundle:Default:getProductById}
+
+getAllSession:
+    path:     /getSession
+    defaults: { _controller: ShopBundle:Default:getallProduitFromSession }
+
+AfficherPanier:
+    path:     /AfficherPanier
+    defaults: { _controller: ShopBundle:Default:AfficherPanier }
+
+AjoutCommande:
+    path:     /AjoutCommande
+    defaults: { _controller: ShopBundle:Default:AjoutCommande }
+ok:
+    path:     /ok
+    defaults: { _controller: ShopBundle:Default:ok }
+
+
+delsession:
+    path:     /delsession/{id}{quantite}
+    defaults: { _controller: ShopBundle:Default:delsession }
+
+boutique_singleProduct:
+    path:     /produit_single/{id}
+    defaults: { _controller: ShopBundle:Default:singleProduct}
+

@@ -1,0 +1,346 @@
+{% extends 'layout.html.twig' %}
+
+
+        {% block carta %}
+           <tbody id="cartakoum">
+            <tr>
+                <td><a href="#"> </a></td>
+                <td></td>
+                <td></td>
+                <td><a class="close" href="#"><i class="fa fa-close font-13"></i></a></td>
+            </tr>
+           </tbody>
+
+        {% endblock %}
+{% block style %}
+    <!DOCTYPE html>
+<html dir="ltr" lang="en">
+<style>
+    #yolo{
+        height: 20%;
+
+    }
+</style>
+<!-- Mirrored from thememascot.net/demo/personal/s/kidspro/v2.0/demo/shop-category-sidebar.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Feb 2018 10:23:52 GMT -->
+<head>
+
+    <!-- Meta Tags -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta name="description" content="KidsPro - Kids Education & Kindergarten School HTML5 Template" />
+    <meta name="keywords" content="kindergarten,children,kidsschool,school,baby,childschool,academy,course,education," />
+    <meta name="author" content="ThemeMascot" />
+
+    <!-- Page Title -->
+    <title>KidsPro - Kids Education & Kindergarten School HTML5 Template</title>
+
+    <!-- Favicon and Touch Icons -->
+    <link href="{{asset('images/favicon.png')}}" rel="shortcut icon" type="image/png">
+    <link href="{{asset('images/apple-touch-icon.png')}}" rel="apple-touch-icon">
+    <link href="{{asset('images/apple-touch-icon-72x72.png')}}" rel="apple-touch-icon" sizes="72x72">
+    <link href="{{asset('images/apple-touch-icon-114x114.png')}}" rel="apple-touch-icon" sizes="114x114">
+    <link href="{{asset('images/apple-touch-icon-144x144.png')}}" rel="apple-touch-icon" sizes="144x144">
+
+    <!-- Stylesheet -->
+    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('css/jquery-ui.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('css/animate.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('css/css-plugin-collections.css')}}" rel="stylesheet"/>
+    <!-- CSS | menuzord megamenu skins -->
+    <link id="menuzord-menu-skins" href="{{asset('css/menuzord-skins/menuzord-rounded-boxed.css')}}" rel="stylesheet"/>
+    <!-- CSS | Main style file -->
+    <link href="{{asset('css/style-main.css')}}" rel="stylesheet" type="text/css">
+    <!-- CSS | Preloader Styles -->
+    <link href="{{asset('css/preloader.css')}}" rel="stylesheet" type="text/css">
+    <!-- CSS | Custom Margin Padding Collection -->
+    <link href="{{asset('css/custom-bootstrap-margin-padding.css')}}" rel="stylesheet" type="text/css">
+    <!-- CSS | Responsive media queries -->
+    <link href="{{asset('css/responsive.css')}}" rel="stylesheet" type="text/css">
+
+    <link href="{{asset('css/colors/theme-skin-color-set-1.css')}}" rel="stylesheet" type="text/css">
+
+    <!-- external javascripts -->
+    <script src="{{asset('js/jquery-2.2.4.min.js')}}"></script>
+    <script src="{{asset('js/jquery-ui.min.js')}}"></script>
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <!-- JS | jquery plugin collection for this theme -->
+    <script src="{{asset('js/jquery-plugin-collection.js')}}"></script>
+
+</head>
+<body class="">
+<div id="wrapper" class="clearfix">
+    <!-- preloader -->
+    <div id="preloader">
+        <div id="spinner">
+            <div class="preloader-dot-loading">
+                <div class="cssload-loading"><i></i><i></i><i></i><i></i></div>
+            </div>
+        </div>
+        <div id="disable-preloader" class="btn btn-default btn-sm">Disable Preloader</div>
+    </div>
+
+    {% endblock %}
+    {% block shop %}
+    {% block activeH %}{% endblock %}
+    {% block activeS %}
+        class="active"
+    {% endblock %}
+    {% endblock %}
+    {% block content %}
+        <link href="{{ asset('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css') }}" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
+        <script src="{{ asset('bundles/starrating/js/rating.js') }}"></script>
+
+
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}" />
+
+
+        <link href="{{asset('css/style32.css')}}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/default32.css')}}" id="option_color">
+        <!-- Start main-content -->
+        <div class="main-content">
+
+
+
+            <!-- Section: inner-header -->
+            <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="{{ asset('images/bg/bg3.jpg') }}">
+                <div class="container pt-70 pb-20">
+                    <!-- Section Content -->
+                    <div class="section-content">
+                        {#{% for produit in Produits %}#}
+                        {#<div class="modal fade customModal" id={{ produit.id }} tabindex="-1" role="dialog" >#}
+                            {#<div class="modal-dialog">#}
+                                {#<div class="modal-content">#}
+                                    {#<div class="panel panel-default formPanel">#}
+                                        {#<div class="panel-heading bg-color-5 border-color-4">#}
+                                            {#<h3 class="panel-title">Details</h3>#}
+                                        {#</div>#}
+                                        {#<div class="panel-body">#}
+
+                                            {#<div class="col-sm-6 col-md-4 col-lg-4 mb-30">#}
+                                                {#<div class="product pb-0">#}
+                                                    {#<span class="tag-sale">Sale!</span>#}
+                                                    {#<div class="product-thumb">#}
+                                                        {#<img alt="image"   src="{{ asset(produit.image) }}" class="img-responsive img-fullwidth">#}
+                                                        {#<div class="overlay">#}
+                                                            {#<div class="btn-add-to-cart-wrapper">#}
+                                                                {#<a class="btn btn-theme-color-red btn-sm btn-flat pl-20 pr-20 btn-add-to-cart text-uppercase font-weight-700">Add To Cart</a>#}
+                                                            {#</div>#}
+
+
+
+                                                        {#</div>#}
+                                                    {#</div>#}
+                                                    {#<div class="product-details text-center bg-lighter pt-15 pb-10">#}
+                                                        {#<a href="#"><h5 class="product-title mt-0"> {{ produit.nom }}</h5></a>#}
+                                                        {#<div class="star-rating" title="Rated 3.50 out of 5"><span data-width="67%">2</span></div>#}
+                                                        {#<div class="rating">#}
+                                                            {#<div class="rating-well">#}
+                                                                {#<input type="text" id="form_rate" name="rating" required="required" class="rating">#}
+                                                                {#<div id="rating_star_5" class="star" data-value="5"></div>#}
+                                                                {#<div id="rating_star_4" class="star" data-value="4"></div>#}
+                                                                {#<div id="rating_star_3" class="star" data-value="3"></div>#}
+                                                                {#<div id="rating_star_2" class="star" data-value="2"></div>#}
+                                                                {#<div id="rating_star_1" class="star" data-value="1"></div>#}
+                                                                {#<div id="rating_star_1" class="star" data-value="1"></div>#}
+                                                            {#</div>#}
+                                                        {#</div>#}
+                                                        {#<div class="price"><del><span class="amount"> {{ produit.prix }}</span></del><ins><span class="amount">{{ produit.prix }}Dt</span></ins></div>#}
+                                                    {#</div>#}
+                                                {#</div>#}
+                                            {#</div>#}
+
+                                        {#</div>#}
+                                    {#</div>#}
+                                {#</div>#}
+                            {#</div>#}
+                        {#</div>#}
+                            {#{% endfor %}#}
+
+
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="sectionTitle text-center">
+                                        <h2>
+                                            <span class="shape shape-left bg-color-4"></span>
+                                            <span  class="color-3" >Produits</span>
+                                            <span class="shape shape-right bg-color-4"></span>
+                                        </h2>
+                                    </div>
+                                </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="">
+                <div class="container mt-30 mb-30 p-30">
+                    <div class="section-content">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-9">
+                                <div class="form-control">
+                                    <input id="search2" type="text" onkeyup="filterp()">
+                                </div>
+                                <div class="row multi-row-clearfix">
+                                    <div class="products">
+                                        {% for produit in Produits %}
+
+                                            <div class="col-sm-6 col-md-4 col-lg-4 mb-30 arbouch">
+                                                <div hidden>{{ produit.nom }}</div>
+                                                <div class="product" style="padding-bottom: 0px">
+                                                    <span class="tag-sale">Sale!</span>
+                                                    <div class="product-thumb">
+                                                        {#listes des produits yolo#}
+
+                                                        <img style="width: 250px;height: 250px;" alt="image"   src="{{ asset(produit.image) }}" class="img-responsive ">
+
+                                                            <div class="overlay">
+                                                            <div class="btn-add-to-cart-wrapper">
+                                                                <a onclick="addToCart('{{ produit.id }}')" class="btn btn-theme-color-red btn-sm btn-flat pl-20 pr-20 btn-add-to-cart text-uppercase font-weight-700" >Add To Cart</a>
+                                                            </div>
+
+                                                              <div class="btn-product-view-details">
+                                                                <a class="btn btn-default btn-theme-color-sky btn-sm btn-flat pl-20 pr-20 btn-add-to-cart text-uppercase font-weight-700" href="{{ path('boutique_singleProduct',{'id':produit.id}) }}" >View detail</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-details text-center bg-lighter pt-15 pb-10">
+                                                        <a href="#"><h5 class="product-title mt-0"> {{ produit.nom }}</h5></a>
+                                                        {#<div class="star-rating" title="Rated 3.50 out of 5"><span data-width="67%">2</span></div>#}
+
+                                                       {#{{ form_start(form) }}#}
+
+                                                        {#{{ form_widget(form.rating) }}#}
+
+                                                        {#{{ form_end(form) }}#}
+                                                        <div class="price"><del><span class="amount"> {{ produit.prix }} DT </span></del><ins><span class="amount">{{ produit.prix }} DT</span></ins></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+
+
+                                        <div class="col-sm-6 col-md-4 col-lg-4 mb-30">
+
+
+                                        </div>
+                                        <div class="col-md-12">
+                                            <nav>
+                                                <ul class="pagination theme-colored mt-0">
+                                                    <li> <a href="#" aria-label="Previous"> <span aria-hidden="true">&laquo;</span> </a> </li>
+                                                    <li class="active"><a href="#">1</a></li>
+                                                    <li><a href="#">2</a></li>
+                                                    <li><a href="#">3</a></li>
+                                                    <li><a href="#">4</a></li>
+                                                    <li><a href="#">5</a></li>
+                                                    <li><a href="#">...</a></li>
+                                                    <li> <a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span> </a> </li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-3">
+                                <div class="sidebar sidebar-right mt-sm-30">
+                                    <div class="widget">
+                                        <h5 class="widget-title line-bottom">Search box</h5>
+                                        <div class="search-form">
+                                            <form>
+                                                <div class="input-group">
+                                                    <input type="text" placeholder="Click to Search" class="form-control search-input">
+                                                    <span class="input-group-btn">
+                            <button type="submit" class="btn search-button"><i class="fa fa-search"></i></button>
+                          </span>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="widget">
+                                        <h5 class="widget-title line-bottom">Categories</h5>
+                                        <div class="categories">
+                                            <ul class="list list-border angle-double-right">
+                                                <li><a href="#">Creative<span>(19)</span></a></li>
+                                                <li><a href="#">Portfolio<span>(21)</span></a></li>
+                                                <li><a href="#">Fitness<span>(15)</span></a></li>
+                                                <li><a href="#">Gym<span>(35)</span></a></li>
+                                                <li><a href="#">Personal<span>(16)</span></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="widget">
+                                        <h5 class="widget-title line-bottom">Top Sellers</h5>
+                                        <div class="top-sellers">
+                                            <article class="post media-post clearfix pb-0 mb-10">
+                                                <a class="post-thumb" href="#"><img src="{{ asset('images/products/sm1.jpg')}}" alt=""></a>
+                                                <div class="post-right">
+                                                    <h5 class="post-title font-weight-600 mt-0 mb-0"><a href="#">Product Name</a></h5>
+                                                    <div class="product-detail">
+                                                        <div class="price mb-10"><ins><span class="amount">$480.00</span></ins></div>
+                                                        <div title="Rated 3.50 out of 5" class="star-rating ml-0"><span data-width="60%">3.50</span></div>
+                                                    </div>
+                                                </div>
+                                            </article>
+
+                                        </div>
+                                    </div>
+                                    <div class="widget">
+                                        <h5 class="widget-title line-bottom">Photos from Flickr</h5>
+                                        <div id="flickr-feed" class="clearfix">
+                                            <!-- Flickr Link -->
+                                            {#<script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=9&amp;display=latest&amp;size=s&amp;layout=x&amp;source=user&amp;user=52617155@N08">#}
+                                            {#</script>#}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- end main-content -->
+
+        </div>
+    {% endblock %}
+
+
+    {% block code %}
+
+</div>
+<!-- end wrapper -->
+
+<!-- Footer Scripts -->
+<!-- JS | Custom script for all pages -->
+{% block javascripts %}
+    <script type="text/javascript">
+
+            function addToCart(id) {
+                $.ajax({
+                    url: "http://localhost/datatable_21/web/app_dev.php/home/setSession/"+id,
+                    success: function(result){
+                        updatepanier()
+                    }}
+                );
+            }
+            function collectAllProducts() {
+                var array=$(".arbouch");
+                console.log(array)
+                return array
+            }
+            window.array=collectAllProducts()
+            function filterp(){
+                console.log($(".arbouch")[0].firstElementChild.childNodes[0].data)
+            }
+
+
+    </script>
+
+{% endblock %}
+
+</body>
+
+<!-- Mirrored from thememascot.net/demo/personal/s/kidspro/v2.0/demo/shop-category-sidebar.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Feb 2018 10:23:53 GMT -->
+</html>
+{% endblock %}

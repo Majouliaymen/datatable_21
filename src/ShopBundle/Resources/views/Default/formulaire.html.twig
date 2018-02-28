@@ -1,0 +1,87 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <H1>Produits</H1>
+{{ form_start(form) }}
+
+<div class="container">
+    <div class="row main">
+        <div class="main-login main-center">
+
+
+        <div class="form-group">
+        <label for="name" class="cols-sm-0 control-label">nom</label>
+        <div class="cols-sm-10">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true" ></i> </span>
+                {{ form_widget(form.nom) }}
+                {#<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name" />#}
+
+            </div>
+        </div>
+    </div><div class="form-group">
+        <label for="name" class="cols-sm-0 control-label">Prix</label>
+        <div class="cols-sm-10">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-dollar fa" aria-hidden="true" ></i> </span>
+                {{ form_widget(form.prix) }}
+                {#<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name" />#}
+
+            </div>
+        </div>
+    </div><div class="form-group">
+        <label for="name" class="cols-sm-0 control-label">Age</label>
+        <div class="cols-sm-10">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-child fa" aria-hidden="true" ></i> </span>
+                {{ form_widget(form.age) }}
+                {#<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name" />#}
+
+            </div>
+        </div>
+    </div><div class="form-group">
+        <label for="name" class="cols-sm-0 control-label">Stock</label>
+        <div class="cols-sm-10">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-sort-numeric-asc fa" aria-hidden="true" ></i> </span>
+                {{ form_widget(form.stock) }}
+                {#<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name" />#}
+
+            </div>
+        </div>
+    </div><div class="form-group">
+        <label for="name" class="cols-sm-0 control-label">Description</label>
+        <div class="cols-sm-10">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-comment fa" aria-hidden="true" ></i> </span>
+                {{ form_widget(form.description) }}
+                {#<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name" />#}
+
+            </div>
+        </div>
+    </div><div class="form-group">
+        <label for="name" class="cols-sm-0 control-label">Categorie</label>
+        <div class="cols-sm-10">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-transgender-alt fa" aria-hidden="true" ></i> </span>
+                {{ form_widget(form.categorie) }}
+                {#<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name" />#}
+
+            </div>
+        </div>
+    </div><div class="form-group">
+        <label for="name" class="cols-sm-0 control-label">Image</label>
+        <div class="cols-sm-10">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-image fa" aria-hidden="true" ></i> </span>
+                {{ form_widget(form.image) }}
+                {#<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name" />#}
+
+            </div>
+        </div>
+
+    </div>
+         <center>   {{ form_widget(form.save) }} </center>
+        </div></div></div>
+{{ form_end(form) }}
+{% endblock %}

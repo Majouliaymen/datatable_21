@@ -1,0 +1,26 @@
+{% extends 'layout.html.twig' %}
+{% block title %}publication{% endblock %}
+{% block css %} <link rel="stylesheet" type="text/css" href="{{ asset('Forumassets/css/mescss/treecategories.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('Forumassets/plugins/tag/tag.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('Forumassets/plugins/trumbowyg/ui/trumbowyg.css') }}">
+{% endblock %}
+{% block content %}
+    <div class="container">
+    <h1>Reponse creation</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form.contenu  ,{'attr': {'class': 'editorTrumbowyg' , 'id': 'form_person_edit'}})}}
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('reponse_index') }}">Back to the list</a>
+        </li>
+    </ul>
+    </div>
+{% endblock %}
+{% block javascript %}
+    <script type="text/javascript" src="{{ asset('Forumassets/plugins/trumbowyg/trumbowyg.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('Forumassets/js/bootstrap-tagsinput.js') }}"></script>
+{% endblock %}

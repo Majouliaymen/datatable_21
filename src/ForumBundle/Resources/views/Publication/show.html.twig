@@ -1,0 +1,55 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+    <h1>Publication</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ publication.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ publication.titre }}</td>
+            </tr>
+            <tr>
+                <th>Nbr_vue</th>
+                <td>{{ publication.nbrvue }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{% if publication.created %}{{ publication.created|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Nbrreponse</th>
+                <td>{{ publication.nbrReponse }}</td>
+            </tr>
+            <tr>
+                <th>Location</th>
+                <td>{{ publication.location }}</td>
+            </tr>
+            <tr>
+                <th>Contenu</th>
+                <td>{{ publication.contenu }}</td>
+            </tr>
+            <tr>
+                <th>Piecejointe</th>
+                <td>{{ publication.pieceJointe }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('publication_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('publication_edit', { 'id': publication.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

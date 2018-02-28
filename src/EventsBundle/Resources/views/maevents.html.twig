@@ -1,0 +1,75 @@
+
+{% extends 'layout.html.twig' %}
+
+
+{% block  content %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    {% block  section %}
+        <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="{{ asset('images/bg/bg1.jpg') }}" style="background-image: {{ asset('&quot;images/bg/bg3.jpg&quot') }}; background-position: 50% 98px;">
+            <div class="container pt-70 pb-20">
+                <!-- Section Content -->
+                <div class="section-content">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <ol class="breadcrumb text-left text-black mt-10">
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">Evenements</a></li>
+                                <li><a href="#">Mes evenements</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+    {% endblock  %}
+
+
+    <section>
+        <div class="container">
+            <div class="row">
+                {% if maevent == NULL %}
+                <center>
+
+                    <strong > vous n'avez pas des évenements </strong></center>
+                {% else %}
+{% for i in maevent %}
+                    <div>
+                        <div class="row mb-15">
+                            <div class="col-sm-6 col-md-4">
+                                <div class="thumb"> <img alt="featured project" src="{{ asset(i.image) }}"    width="200px" height="200px"   class="img-fullwidth"></div>
+                            </div>
+                            <div class="col-sm-6 col-md-8">
+                                <h3 class="mt-0 mt-sm-20">{{ i.nom }}</h3>
+                                <h4 class="text-theme-color-blue"><span class="text-theme-color-red"></span> date: de<strong style="color: #66afe9">{{ i.datedeb }}</strong>  à <strong style="color: #66afe9">{{ i.datefin }}</strong></h4>
+
+                                <p>{{ i.description }}</p>
+                                <a class="btn btn-dark btn-theme-color-red btn-sm text-uppercase mt-10" href="{{ path('suppE',{'id':i.id}) }}">Supprimer</a>
+                                <a class="btn btn-dark btn-theme-color-sky btn-sm text-uppercase mt-10" href="{{ path('updateEE',{'id':i.id}) }}">modifier</a>
+
+
+                            </div>
+                        </div>
+                        <hr>
+
+                    </div>
+{% endfor %}
+                {% endif %}
+                <div class="col-md-3">
+
+                </div>
+            </div>
+
+
+    </section>
+
+    <script>
+        $(document).ready(function() {
+            $('.js-example-basic-single').select2();
+        });
+    </script>
+{% endblock %}
+

@@ -1,0 +1,67 @@
+
+{% extends 'layout.html.twig' %}
+
+
+{% block  content %}
+    {% block  section %}
+        <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="{{ asset('images/bg/bg1.jpg') }}" style="background-image: {{ asset('&quot;images/bg/bg3.jpg&quot') }}; background-position: 50% 98px;">
+            <div class="container pt-70 pb-20">
+                <!-- Section Content -->
+                <div class="section-content">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <ol class="breadcrumb text-left text-black mt-10">
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">Evenements</a></li>
+                                <li><a href="#">Mes evenements</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+    {% endblock  %}
+
+
+    <section>
+        <div class="container">
+            <div class="row">
+                {% if maparti == NULL %}
+                    <center>
+
+                        <strong > vous étes  pas participé à aucune evenement </strong></center>
+                {% else %}
+                    {% for i in maparti %}
+                        <div>
+                            <div class="row mb-15">
+                                <div class="col-sm-6 col-md-4">
+                                    <div class="thumb"> <img alt="featured project" src="{{ asset(i.image) }}"    width="200px" height="200px"   class="img-fullwidth"></div>
+                                </div>
+                                <div class="col-sm-6 col-md-8">
+                                    <h3 class="mt-0 mt-sm-20"><i class="fa fa-music" aria-hidden="true"></i>  {{ i.nom }}</h3>
+                                    <h4 class="text-theme-color-blue"><span class="text-theme-color-red"></span><i class="fa fa-calendar  color-1" aria-hidden="true"></i>  {{ i.datedeb|date('d-m-y') }} à {{ i.datefin|date('d-m-y') }}</h4>
+                                    <h4 class="text-theme-color-red"><span class="text-theme-color-red"></span><i class="fa fa-map-marker color-5" aria-hidden="true"></i>{{ i.adresse }}</h4>
+
+                                    <p><i class="fa fa-pencil-square-o " aria-hidden="true"></i>{{ i.description }}</p>
+
+                                </div>
+                            </div>
+                            <hr>
+
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <div class="col-md-3">
+
+                </div>
+            </div>
+
+
+    </section>
+
+
+{% endblock %}
+

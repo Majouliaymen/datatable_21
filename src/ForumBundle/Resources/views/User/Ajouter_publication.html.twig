@@ -1,0 +1,72 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Ajouter question{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('Forumassets/plugins/tag/tag.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('Forumassets/plugins/trumbowyg/ui/trumbowyg.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('Forumassets/plugins/select2/css/select2.min.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="main-container">
+
+    <div class="page-header">
+        <h1>Ajouter article</h1>
+    </div>
+    <div class="content-wrap">  <!--START: Content Wrap-->
+        <div class="row">
+            <div class="panel">
+                <div class="panel-heading">
+                    <div class="form-group">
+                        <label>Selection categorie</label>
+                        <select class="form-control select2Search">
+                            <option value="AK">developpement</option>
+                            <option value="HI">&nbsp;&nbsp;&nbsp;&nbsp;linux</option>
+                            <option value="CA">&nbsp;&nbsp;&nbsp;&nbsp;microsoft</option>
+                            <option value="CA">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c#</option>
+                            <option value="AK">conception</option>
+                            <option value="HI">&nbsp;&nbsp;&nbsp;&nbsp;Merise</option>
+                            <option value="CA">&nbsp;&nbsp;&nbsp;&nbsp;UML</option>
+                            <option value="AK">Les matiéres</option>
+                            <option value="HI">&nbsp;&nbsp;&nbsp;&nbsp;Gestion de projet</option>
+                            <option value="CA">&nbsp;&nbsp;&nbsp;&nbsp;android</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label for="titree">Titre</label>
+                        <input type="text" class="form-control" name="titre" id="titree" placeholder="titre">
+                    </div>
+                    <label for="contenuu">Contenu</label>
+                    <div class="editorTrumbowyg" id="contenuu" placeholder="copier votre contenu depui le word "></div>
+
+                    <h3 class="panel-title">File input</h3>
+                    <input id="pdffile" name="file" type="file" />
+                    </div>
+
+
+                    <div class="example example_markup">
+                        <h3>Tags</h3>
+                        <div class="bs-example">
+                            <input type="text" placeholder="Tags" data-role="tagsinput" />
+                        </div>
+                    </div>
+                    <br><br>
+                    <div class="col-md-15 text-center">
+
+                        <button type="button" class="btn btn-primary">Publier</button>
+                        <button type="button" class="btn btn-warning">Annuler</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('Forumassets/plugins/trumbowyg/trumbowyg.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('Forumassets/js/bootstrap-tagsinput.js') }}"></script>
+{% endblock %}

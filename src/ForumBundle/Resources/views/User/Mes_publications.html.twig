@@ -1,0 +1,160 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Mes publications{% endblock %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('Forumassets/plugins/datatable/dataTables.bootstrap.min.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('Forumassets/plugins/tag/tag.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('Forumassets/plugins/trumbowyg/ui/trumbowyg.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('Forumassets/plugins/select2/css/select2.min.css') }}">
+
+{% endblock %}
+{% block content %}
+
+    <div class="main-container">    <!-- START: Main Container -->
+      <div class="page-header">
+                <ol class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="{{ path('consulter_forum') }}">Forum</a></li>
+                    <li class="active">Mes publications</li>
+                </ol>
+            </div>
+    <div class="content-wrap">  <!--START: Content Wrap-->
+        <div class="row">
+            <div class="col-md-12">
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Publier publication</button>
+                <hr>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-dataTable">
+                                <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Categories</th>
+                                    <th>Location</th>
+                                    <th>Date de publication</th>
+                                    <th>Action</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {%  for pub in publications %}
+                                <tr>
+                                    <td>{{ pub.titre }}</td>
+                                    {% if pub.idCategorie.type == 'sous-categorie' %}
+                                    <td> {{ pub.idCategorie.getIdCat().nom }}/ {{ pub.idCategorie.nom }}</td>
+                                    {% else %}
+                                        <td> {{ pub.idCategorie.nom }}</td>
+                                    {% endif %}
+                                    {% if pub.location == 'approuver' %}
+                                        <td class="success">{{ pub.location }}</td>
+                                    {% elseif pub.location == 'deapprouver' %}
+                                        <td class="danger">{{ pub.location }}</td>
+                                    {% else %}
+                                        <td class="warning">{{ pub.location }}</td>
+                                    {% endif %}
+                                    <td></td>
+                                    <td>
+                                        <div class="row">
+                                            {% if pub.location == 'approuver' %}
+                                            <div class="text-center">
+                                                <a class="btn btn-success" href="{{ path('consulter_pub_rep',{'type' : 'publication' , 'id' : pub.id }) }}" target="_blank">Afficher</a>
+                                            </div>
+                                            {% else %}
+                                                <div class="col-md-4">
+                                                    <a class="btn btn-success" href="{{ path('consulter_pub_rep',{'type' : 'publication' , 'id' : pub.id }) }}" target="_blank">Afficher</a>
+                                                </div>
+                                                {% endif %}
+                                            {% if pub.location !='approuver' %}
+                                            <div class="col-md-4">
+                                                <form action="{{ path('supprimer_publication' , {'id_publication' : pub.id}) }}" method="POST"> <button class="btn btn-danger">Supprimer</button></form>
+                                            </div>
+                                            <div class="col-md-4">
+                                                  <form method="POST" action="{{ path('update_publication' , {'id' : pub.id}) }}"> <button class="btn btn-primary" >Modifier</button></form>
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog modal-lg" role="document">
+                {{ form_start(form_creation) }}
+                {{ form_errors(form_creation) }}
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Publier question</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="content-wrap">  <!--START: Content Wrap-->
+                            <div class="row">
+                                <div class="panel">
+                                    <div class="panel-heading">
+                                        <div>
+                                            {% include'@Forum/MyForum/categorie_selection.html.twig' %}
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="form-group">
+                                            <label for="titree">Titre</label>
+                                            {{ form_widget(form_creation.titre,{'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                        <label for="contenuu">Contenu</label>
+                                        {{ form_widget(form_creation.contenu ) }}
+
+                                        <h3 class="panel-title">File input</h3>
+                                        {{ form_widget(form_creation.pieceJointe) }}
+                                    </div>
+
+                                    <!--
+                                    <div class="example example_markup">
+                                        <h3>Tags</h3>
+                                        <div class="bs-example">
+                                            <input type="text" placeholder="Tags" data-role="tagsinput" />
+                                        </div>
+                                    </div>
+                                    -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                        <button type="submit" class="btn btn-success">Ajouter</button>
+                    </div>
+                </div>
+                {{ form_end(form_creation) }}
+            </div>
+        </div>
+
+
+    </div>  <!--END: Content Wrap-->
+
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('Forumassets/plugins/trumbowyg/trumbowyg.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('Forumassets/js/bootstrap-tagsinput.js') }}"></script>
+
+
+    <script type="text/javascript" src="{{ asset('Forumassets/plugins/datatable/jquery.dataTables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('Forumassets/plugins/datatable/dataTables.bootstrap.min.js') }}"></script>
+
+    <script type="text/javascript" src="{{ asset('Forumassets/js/page-table.js') }}"></script>
+    <script>
+        jQuery(document).ready(function () {
+            DataTableBasic.init();
+        });
+    </script>
+
+
+{% endblock %}

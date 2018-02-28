@@ -1,0 +1,59 @@
+{% extends '::layout.html.twig' %}
+
+{% block content %}
+    <br>
+    <div class="product" >
+        <div class="col-md-5">
+            <div class="product-image">
+                <div class="zoom-gallery">
+                    <a href="#" title="Title Here 1"><img src="{{ asset(detaild.image) }}" alt=""></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="product-summary">
+                <h2 >{{ detaild.nom }}</h2>
+
+                <div class="short-description">
+                    <p>{{ detaild.description }}</p>
+                </div>
+                <div class="category"><strong style="color: #1a1a1a">Nom Donateur:</strong> <a href="#">{{ detaild.nomuser }}</a>,</div>
+
+                <div class="category"><strong style="color: #00CC00">Category:</strong> <a href="#">{{ detaild.categorie }}</a>,</div>
+                <div class="tags"><strong style="color: #5D9CEC">genre:</strong> <a href="#">{{ detaild.genre }}</a>,</div>
+                <div class="cart-form-wrapper mt-30">
+                    <form enctype="multipart/form-data" method="post" class="cart">
+                        <input type="hidden" value="productID" name="add-to-cart">
+                        <table class="table variations no-border">
+                            <tbody>
+                            <tr>
+                                <td class="name"><img alt="" src="{{ asset('images/flat-color-icons-svg/cell_phone.svg') }}" height="30px" width="30px">tel</td>
+                                <td>
+                        {{ detaild.tel }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="name"><img alt="" src="{{ asset('images/flat-color-icons-svg/globe.svg') }}"  height="30px" width="30px" > adresse</td>
+                                <td >
+                                    {{ detaild.adresse }}
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="name"><img alt="" src="{{ asset('images/flat-color-icons-svg/calendar.svg') }}" height="30px" width="30px">date</td>
+                                <td >
+                                    {{ detaild.datenow|date('d-m-y') }}
+                                </td>
+                            </tr>
+
+
+                            </tbody>
+                        </table>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

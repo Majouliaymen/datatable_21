@@ -1,0 +1,36 @@
+{% extends 'layout.html.twig' %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('Forumassets/plugins/tag/tag.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('Forumassets/plugins/trumbowyg/ui/trumbowyg.css') }}">
+{% endblock %}
+{% block title %}modifier question{% endblock %}
+{% block content %}
+    <div class="main-container">
+        <div class="page-header">
+            <ol class="breadcrumb">
+                <li><a href="{{ path('consulter_forum') }}">Forum</a></li>
+                <li><a href="{{ path('mes_publication') }}">Mes publications</a></li>
+                <li class="active">Modifier question</li>
+            </ol>
+        </div>
+    <div class="content-wrap panel">  <!--START: Content Wrap-->
+{{ form_start(form_update , {'method':'POST'}) }}
+{{ form_errors(form_update) }}
+        <div class="form-group">
+          <label for="titree">Titre</label>
+        {{ form_widget(form_update.titre ,{'value':publication.titre ,'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group">
+          <label for="titree">Contenu</label>
+        {{ form_widget(form_update.contenu , {'attr': {'class': 'editorTrumbowyg' , 'id': 'form_person_edit'}}) }}
+        </div>
+<button type="submit" class="btn btn-primary col-lg-12">Mise à jour</button>
+
+{{ form_end(form_update) }}
+    </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('Forumassets/plugins/trumbowyg/trumbowyg.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('Forumassets/js/bootstrap-tagsinput.js') }}"></script>
+{% endblock %}

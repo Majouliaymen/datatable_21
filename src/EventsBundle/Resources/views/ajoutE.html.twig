@@ -1,0 +1,275 @@
+{% extends 'layout.html.twig' %}
+
+
+
+{% block javascripts %}
+    <!-- REQUIRED JS SCRIPTS -->
+    <script type="text/javascript">
+
+
+        $("#prix").hide();
+
+        $(' input[type=radio]').on("change", function () {
+
+            if ($("input:checked").val() === "Payant"){
+
+                $("#prix").show();
+            }
+
+            else {
+                $("#prix").hide();
+
+            }
+
+        });
+
+    </script>
+
+
+
+
+
+
+    <script>
+
+
+
+
+
+    </script>
+
+{% endblock %}
+{% block  content %}
+    {% block  section %}
+        <section class="inner-header divider parallax layer-overlay overlay-dark-3" data-bg-img="{{ asset('images/bg/bg-sm2.jpg') }}" style="background-image: {{ asset('&quot;images/bg/bg3.jpg&quot') }}; background-position: 50% 30px;">
+            <div class="container pt-70 pb-20">
+                <!-- Section Content -->
+                <div class="section-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 class="title text-white">About</h2>
+                            <ol class="breadcrumb text-left text-white mt-10">
+                                <li><a href="#" style="color: #0000F0">Home</a></li>
+                                <li><a href="#"  style="color:#0000F0 ">Evenements</a></li>
+
+                                <li><a href="#"  style="color: #0000F0">Créer Evenement</a></li>
+
+
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+
+    {% endblock  %}
+
+
+
+
+    <br>
+    <div class="row">
+        <div class="col-sm-12 col-xs-12">
+
+            <div class="homeContactContent">
+
+                <center>
+                    {{ form_start(form) }}
+
+                    <div class="row " >
+
+
+                        <div class="col-sm-2 col-xs-12"></div>
+                        <div class="col-sm-4 col-xs-12">
+                            <div class="form-group">
+                                <i class="fa fa-music"></i>
+
+                                {{ form_widget(form.nom,{'attr':{'type':'textarea','class':'form-control border-color-1 ','placeholder':'Name of the event'}}) }}
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-sm-4 col-xs-12">
+                            <div class="form-group">
+                                <i class="fa fa-map-marker"></i>
+                                {{ form_widget(form.adresse,{'attr':{'type':'textarea','class':'form-control border-color-3','placeholder':'Adresse'}}) }}
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="row " >
+
+
+                        <div class="col-sm-2 col-xs-12"></div>
+                        <div class="col-sm-4 col-xs-12">
+
+
+
+                            <div class="form-group">Date debut
+                                <div class='input-group date' id='datetimepicker6'>
+
+                                    <input type='text'  name="datedeb" class="form-control"   data-date-format="DD-MM-YYYY hh:mm:ss" />
+                                    <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+
+                        <div class="col-sm-4 col-xs-12">
+
+
+
+                            <div class="form-group">date Fin
+                                <div class='input-group ' id='datetimepicker7'>
+                                    <input type='text'   name="datefin" class="form-control"  data-date-format="DD-MM-YYYY hh:mm:ss"  />
+                                    <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+                                </div>
+                            </div>
+
+
+
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="row " >
+
+
+                        <div class="col-sm-2 col-xs-12"></div>
+                        <div class="col-sm-4 col-xs-12">
+
+
+                            <div class="form-group" id="typeradio">
+                                <i class="fa fa-black-tie"></i>
+                                {{ form_widget(form.type,{'attr':{'class':'form-control border-color-1','name':'radio'}}) }}
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-4 col-xs-12">
+
+
+
+                            <div class="form-group">
+                                <i class="fa fa-image"></i>
+                                {{ form_widget(form.image,{'attr':{'type':'textarea','class':'form-control border-color-3'}}) }}
+
+                            </div>
+
+
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    {#
+                                                        data-date-format="DD-MM-YYYY hh:mm:ss"
+                    #}
+                    <script type="text/javascript">
+                        $(function () {
+                            $('#datetimepicker6').datetimepicker();
+                            $('#datetimepicker7').datetimepicker({
+                                useCurrent: false //Important! See issue #1075
+                            });
+                            $("#datetimepicker6").on("dp.change", function (e) {
+                                $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+                            });
+                            $("#datetimepicker7").on("dp.change", function (e) {
+                                $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+                            });
+                        });
+
+
+
+                    </script>
+<div class="row">
+    <div class="col-sm-4 col-xs-12"></div>
+                    <div class="col-sm-4 col-xs-12">
+
+                    <div class="form-group">
+                        <i class="fa fa-comments" aria-hidden="true"></i>
+
+                        {{ form_widget(form.description,{'attr':{'type':'textarea','class':'form-control border-color-5','placeholder':'Description of the event'}}) }}
+
+
+                    </div>
+
+                    </div>
+
+
+
+</div>
+
+
+
+                    <div class="row">
+                        <div class="col-sm-4 col-xs-12"></div>
+
+                        <div class="col-sm-4 col-xs-12">
+                        <div class="form-group" id="prix">
+                            <i class="fa fa-money"></i>
+                            {{ form_widget(form.prix,{'attr':{'class':'form-control border-color-6','placeholder':'Prix'}}) }}
+
+                        </div>
+
+                    </div>
+                    </div>
+                    {{ form_widget(form.valider,{'attr':{'class':'btn btn-primary'}}) }}
+
+
+                    {{ form_end(form) }}
+                </center>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    </center>
+    </div>
+
+
+
+
+{% endblock  %}

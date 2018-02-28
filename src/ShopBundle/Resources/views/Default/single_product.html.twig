@@ -1,0 +1,100 @@
+{% extends 'layout.html.twig' %}
+
+
+    {% block content %}
+        <link href="{{ asset('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css') }}" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
+        <script src="{{ asset('bundles/starrating/js/rating.js') }}"></script>
+
+
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}" />
+
+        <link href="{{asset('css/style32.css')}}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/default32.css')}}" id="option_color">
+
+        <link href="{{asset('css/style32.css')}}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/default32.css')}}" id="option_color">
+        <section class="mainContent full-width clearfix">
+            <div class="container">
+                <div class="row">
+
+
+                    <div class="col-md-6 col-sm-7 col-xs-12">
+                        <div class="product-gallery">
+                            <div class="product-gallery-content">
+                                <ul class="product-gallery-preview">
+                                    <li id="preview01" class="current">
+                                        <img src="{{ asset(produit.image) }}" alt="Product" class="img-responsive">
+                                    </li>
+
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-5 col-xs-12">
+                        <div class="product-info">
+                            <h1 class="product-title">{{ produit.nom }}</h1>
+                            <div class="price">
+                                <span>{{ produit.prix }}dt</span>
+
+                            </div>
+                            {{ form_start(f) }}
+                            <div class="row">{{ form_widget(f.rating ) }}
+                                {{ form_widget(f.valider) }}
+                            </div>
+                            {{ form_end(f) }}
+                            <br>
+                            <h3 class="product-title">Description :</h3>
+                            <p>{{ produit.description }}</p>
+
+
+
+                            {#<div class="product-meta">#}
+                                {#<div class="product-category">#}
+                                    {#<h3 class="product-title">Category:</h3>{{ produit.categorie }}#}
+                                {#</div>#}
+                            {#</div>#}
+
+
+                            <div class="add-cart">
+                                {#<div class="count-input">#}
+                                    {#<input class="quantity btn-primary" type="text" value="1">#}
+                                    {#<a class="incr-btn incr-up" data-action="decrease" href="#"><i class="fa fa-caret-up" aria-hidden="true"></i></a>#}
+                                    {#<a class="incr-btn incr-down" data-action="increase" href="#"><i class="fa fa-caret-down" aria-hidden="true"></i></a>#}
+                                {#</div>#}
+                                <a onclick="addToCart('{{ produit.id }}')" class="add-to-cart btn btn-primary">Ajouter au panier</a>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+
+
+    {% endblock %}
+
+{% block javascripts %}
+    <script>
+        function addToCart(id) {
+            $.ajax({
+                url: "http://localhost/pidev/web/app_dev.php/home/setSession/"+id,
+                success: function(result){
+                    updatepanier()
+                    var array=result.data;
+                    for (i = 0; i < array.length; i++) {
+                        console.log(array[i]);
+                    }
+                }}
+            );
+        }
+    </script>
+
+{% endblock %}

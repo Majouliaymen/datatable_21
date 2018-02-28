@@ -1,0 +1,24 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Forum{% endblock %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('Forumassets/css/mescss/treecategories.css') }}">
+
+{% endblock %}
+{% block content %}
+<div class="main-container">
+
+    <div class="page-header">
+        <h1>Forum</h1>
+        {% include '@Forum/Base/Chercheforum.html.twig' %}<br>
+    </div>
+        <div class="content-wrap">  <!--START: Content Wrap-->
+
+                <div class="row">
+                    <div class="col-md-4 panel-expand">
+                        {% include 'ForumBundle:Base:categories.html.twig' %}
+                    </div>
+            </div>
+        </div>
+</div>
+{% endblock %}
+{%  block javascripts %}{% endblock %}

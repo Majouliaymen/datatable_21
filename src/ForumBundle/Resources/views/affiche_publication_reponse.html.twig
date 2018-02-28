@@ -1,0 +1,29 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>afficher {% if publication is not null %} publication {% else %}reponse{% endif %}</title>
+    <link rel="stylesheet" type="text/css" href="{{ asset ('Forumassets/plugins/bootstrap/bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset ('Forumassets/css/style-default.css')}}">
+</head>
+<div class="main-container">
+
+    <div class="container">
+                {% if publication is not null %}
+                <div class="page-header">
+                    <h4 class="modal-title" id="myModalLabel">Publication : <b>{{ publication.titre }}</b></h4>
+                    <span>User: <b>{{ publication.iduser.prenom }} {{ publication.iduser.nom }}</b> </span> | <span> Pseudo:&nbsp;<b>{{ publication.iduser.username }}</b> </span>  |   <span>Created: <b>{{ publication.created|date('d-m-y h:i:s') }}</b> </span>
+                </div>
+                    <div style="overflow: scroll;height: 600px" class="col-md-12 panel">{{ publication.contenu |raw}}</div>
+                {% else %}
+                    <div class="page-header">
+                        <h4 class="modal-title" id="myModalLabel"> Publication : {{ reponse.idPublication.titre }}</h4>
+                        <span>User: <b>{{ reponse.idpublication.iduser.prenom }} {{ reponse.idPublication.iduser.nom}}</b> </span> <span>Pseudo:&nbsp;<b>{{ reponse.idPublication.iduser.username }}</b> </span> <span>Views: <b>{{ reponse.idPublication.nbrVue}}</b> </span> <span>Created: <b>{{  reponse.idPublication.created|date}}</b> </span>
+                        <h4 class="modal-title" id="myModalLabel">Reponse</h4>
+                        <span>Author: <b>{{ reponse.iduser.prenom }} {{ reponse.iduser.nom }}</b> </span> <span>Pseudo:&nbsp;<b>{{ reponse.iduser.username }}</b></span> <span>Created: <b>{{  reponse.idPublication.created|date}}</b> </span>
+                    </div>
+                    <div style="overflow: scroll;height: 600px" class="col-md-12 panel">{{ reponse.contenu |raw}}</div>
+
+                {% endif %}
+    </div>
+</div>
+</html>

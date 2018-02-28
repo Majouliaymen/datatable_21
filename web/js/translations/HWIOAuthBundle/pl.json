@@ -1,0 +1,3 @@
+{
+    "translations": {"pl":{"HWIOAuthBundle":{"header.connecting":"\u0141\u0105czenie","header.success":"\u0141\u0105czenie konta \"%name%\" zako\u0144czone sukcesem!","header.register":"Zarejestruj si\u0119 korzystaj\u0105c z konta \"%name%\"","header.registration_success":"Rejestracja oraz \u0142\u0105czenie konta \"%username%\" zako\u0144czone sukcesem!","connect.confirm.cancel":"Anuluj","connect.confirm.submit":"Po\u0142\u0105cz konta","connect.confirm.text":"Czy jeste\u015b pewny, \u017ce chcesz po\u0142\u0105czy\u0107 %service% \"%name%\" ze swoim kontem?","connect.registration.cancel":"Anuluj","connect.registration.submit":"Zarejestruj konto"}}}
+}

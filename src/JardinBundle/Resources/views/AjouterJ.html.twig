@@ -1,0 +1,79 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <H1>Jardin</H1>
+    {{ form_start(form) }}
+
+    <div class="container">
+        <div class="row main">
+            <div class="main-login main-center">
+
+                <div class="form-group">
+                    <label for="name" class="cols-sm-0 control-label">Nom de Votre Jardin d'enfant</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true" ></i> </span>
+                            {{ form_widget(form.nom) }}
+                            {#<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name" />#}
+
+                        </div>
+                    </div>
+                </div><div class="form-group">
+                    <label for="name" class="cols-sm-0 control-label">Description</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-dollar fa" aria-hidden="true" ></i> </span>
+                            {{ form_widget(form.description) }}
+                            {#<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name" />#}
+
+                        </div>
+                    </div>
+                </div><div class="form-group">
+                    <label for="name" class="cols-sm-0 control-label">Adresse</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-child fa" aria-hidden="true" ></i> </span>
+                            {{ form_widget(form.adresse) }}
+                            {#<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name" />#}
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="name" class="cols-sm-0 control-label">Numero de Telephone</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-child fa" aria-hidden="true" ></i> </span>
+                            {{ form_widget(form.numtel) }}
+                            {#<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name" />#}
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="name" class="cols-sm-0 control-label">Adresse Email</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-child fa" aria-hidden="true" ></i> </span>
+                            {{ form_widget(form.adressemail) }}
+                            {#<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name" />#}
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="name" class="cols-sm-0 control-label">Logo</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-image fa" aria-hidden="true" ></i> </span>
+                            {{ form_widget(form.logo) }}
+                            {#<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name" />#}
+
+                        </div>
+                    </div>
+
+                </div>
+                <center>   {{ form_widget(form.save) }} </center>
+            </div></div></div>
+    {{ form_end(form) }}
+{% endblock %}

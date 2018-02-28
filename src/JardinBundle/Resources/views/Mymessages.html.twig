@@ -1,0 +1,23 @@
+{% extends '::layout.html.twig' %}
+
+{% block content %}
+    <div class="highlight">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th scope="col">Objet</th>
+            <th scope="col">Contenu Message</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for msg in messages %}
+            <tr>
+                <td> {{ msg.objet }}</td>
+                <td>{{ msg.contenuMessage }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+{% endblock %}

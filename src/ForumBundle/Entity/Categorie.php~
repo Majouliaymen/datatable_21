@@ -1,0 +1,58 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: ikbel
+ * Date: 11/02/2018
+ * Time: 19:34
+ */
+
+namespace ForumBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+/**
+ * categorie
+ *
+ * @ORM\Table(name="Categorie")
+ * @ORM\Entity(repositoryClass="ForumBundle\Repository\categorieRepository")
+ */
+
+class Categorie
+{
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=50)
+     */
+    private $nom;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="nbr_publications", type="integer")
+     */
+    private $nbrPublications;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string")
+     */
+    private $type;
+
+    /**
+     *@ORM\ManyToOne(targetEntity="ForumBundle\Entity\Categorie")
+     *@ORM\JoinColumn(name="id_cat", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $id_cat;
+
+}

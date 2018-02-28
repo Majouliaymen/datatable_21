@@ -1,0 +1,48 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Ajout Categorie{% endblock %}
+{% block css %}<link rel="stylesheet" type="text/css" href="{{ asset('Forumassets/plugins/tag/tag.css') }}">{% endblock %}
+{% block content %}
+    <div class="main-container">
+
+        <div class="page-header">
+            <h1>Ajouter catégories</h1>
+        </div>
+
+
+        <form class="container">
+            <div class="form-group">
+                <label for="usr">Nom categories :</label>
+                <input type="text" class="form-control" id="usr">
+            </div>
+
+            <div class="form-group">
+                <label for="sel1">Select Parent:</label>
+                <select class="form-control" id="sel1">
+                    <option>developpement</option>
+                    <option>conception</option>
+                    <option>cours</option>
+                    <option>projets</option>
+                </select>
+            </div>
+
+            <div class="example example_markup">
+                <h5>mot clé</h5>
+                <div class="bs-example">
+                    <div class="bootstrap-tagsinput"><input type="text" placeholder="Tags" data-role="tagsinput" style="display: none;">
+                    </div>
+                </div>
+                <br>
+                <div class="col-md-15 text-center">
+
+                    <button type="button" class="btn btn-primary">Ajouter</button>
+                    <button type="button" class="btn btn-warning">Annuler</button>
+
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('Forumassets/js/bootstrap-tagsinput.js') }}"></script>{% endblock %}

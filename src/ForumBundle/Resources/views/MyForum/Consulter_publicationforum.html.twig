@@ -1,0 +1,143 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Publication{% endblock %}
+{% block css %} <link rel="stylesheet" type="text/css" href="{{ asset('Forumassets/css/mescss/treecategories.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('Forumassets/plugins/tag/tag.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('Forumassets/plugins/trumbowyg/ui/trumbowyg.css') }}">
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('Forumassets/css/ratingg.css') }}">
+
+{% endblock %}
+{% block content %}
+    <div class="main-container">
+
+        <div class="page-header">
+            <h1>Base de connaicance partagée</h1>
+            <hr>
+        {% include 'ForumBundle:Base:Chercheforum.html.twig' %}
+            <br>
+        </div>
+
+        <div class="content-wrap">  <!--START: Content Wrap-->
+                <div class="row">
+                    <div class="col-md-4 panel-expand">
+                        {% include 'ForumBundle:Base:categories.html.twig' %}
+                    </div>
+                    <div class="col-md-7 panel">
+                            <br>
+                            <div class="row">
+                                <div class="col-md-2">
+                                        <img class="img-responsive avatar img-circle" src="{{ asset(publicationaffiche.iduser.image) }}" style="width:50px"/>
+                                </div>
+                                <div class="col-md-8 ">
+                                <span class="text-muted "> Author: <b>{{ publicationaffiche.iduser.prenom }} {{ publicationaffiche.iduser.nom }}</b> </span>  | &nbsp;&nbsp; <span> Views: {{ publicationaffiche.nbrVue }} </span>  &nbsp;&nbsp;| &nbsp;&nbsp; <span> Created : {{ publicationaffiche.created|date }} </span>
+                                    <br><br>{% if publication_resolu is not null %}<div class="alert alert-success" role="alert">
+                                        Publication resolu
+                                    </div>{% endif %}
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="form-control col-md-12" readonly="50"><b>{{ publicationaffiche.titre}}</b></div>
+                            <br><br><hr>
+
+
+                            <div class="row">
+                            <div style="overflow: scroll;height: 600px" class="col-md-12">{{ publicationaffiche.contenu |raw}}</div>
+                            <div>
+
+                               <div class="row">
+                               <div class="col-md-12">
+                            <h4 class="text-muted text-center text-uppercase">Les reponses</h4><br>
+                            {% for reponse in reponses  %}
+                            {% if reponse.idPublication == publicationaffiche %}
+                                <!-- First Comment -->
+                                {% if publication_resolu is not null and publication_resolu.idreponse ==reponse %}
+                                <article class="row alert-success">
+                                    {% else %}
+                                    <article class="row">
+                                        {% endif %}
+                                    <div class="col-md-2 col-sm-2 col-xs-3  hidden-xs">
+                                        <figure class="thumbnail">
+                                            <img class="img-responsive" src="{{ asset(reponse.idUser.image) }}" />
+
+                                        </figure>
+                                    </div>
+                                    <div class="col-md-10 col-sm-10">
+                                                <div class="text-left">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                    <div class="comment-user"><i class="fa fa-user"></i> {{ reponse.idUser.prenom }} {{ reponse.idUser.nom }} | <i class="fa fa-mortar-board"></i>  <time class="comment-date" ><i class="fa fa-clock-o"></i>{{ reponse.created|date  }}</time> </div>
+                                                        </div>
+                                                        {% if is_granted('ROLE_USER') and publication_resolu is null and publicationaffiche.iduser == app.user %}
+                                                        <div class="col-md-6 pull-left">
+                                                            <form action="{{ path('publication_resolu',{'id_publication' : reponse.idPublication.id,'id_reponse' : reponse.id}) }}" method="POST"> <button class="btn btn-rounded btn-warning-outline btn-xs">resolu</button></form>
+                                                        </div>
+                                                        {% endif %}
+                                                        {% if is_granted('ROLE_USER') and publication_resolu is not null and publication_resolu.idreponse ==reponse %}
+                                                            <div class="col-md-6 pull-left">
+                                                                <form action="{{ path('supprimer_publication_resolu',{'id_publication_resolu' : publication_resolu.id,'id_pub' : reponse.idPublication.id }) }}" method="POST"> <button class="btn btn-rounded btn-warning-outline btn-xs">supprimer resolu</button></form>
+                                                            </div>
+                                                        {% endif %}
+                                                        <div class="part col-md-12 row">
+                                                                    {%  if reponse.idUser.id != app.user.id %}
+                                                                    {% set test=0 %}
+                                                                    {% for avis in avis %}
+                                                                        {% if avis.iduser == app.user and avis.Reponse == reponse %}
+                                                                            {% set test=1 %}
+                                                                        {% endif %}
+                                                                    {% endfor %}
+                                                            {% if test == 0 %}
+                                                                    <div class="stars rate" data-percent="30"><a href="{{ path('donneravis',{'id_reponse' : reponse.id , 'avis' : 1 }) }}" title="awful">★</a><a href="{{ path('donneravis',{'id_reponse' : reponse.id , 'avis' : 2 }) }}" title="ok">★</a><a href="{{ path('donneravis',{'id_reponse' : reponse.id , 'avis' : 3 }) }}" title="good">★</a><a href="{{ path('donneravis',{'id_reponse' : reponse.id , 'avis' : 4 }) }}" title="great">★</a><a href="{{ path('donneravis',{'id_reponse' : reponse.id , 'avis' : 5 }) }}" title="awesome">★</a> </div>&nbsp;&nbsp;
+                                                            {% endif %}
+                                                            {% endif %} {% if reponse.avis.count != 0  %}{% set var =  ( reponse.avis.count / publicationaffiche.nbrVue)*100 %}{% else %}{% set var = 0 %}{% endif %}<a data-container="body" data-toggle="popover" data-placement="top" title="{{ var }} %" data-content="{% for avis in avis %}{% if avis.reponse == reponse %}{{ avis.iduser.prenom }} {{ avis.iduser.nom }} | {{ avis.avis }} <br>{% endif %}{% endfor %}" data-html="true">{{ reponse.avis.count }} Rate</a>
+
+
+                                                            <div class="btn-group inline pull-right"><div class="col-xs-4"> <a class="btn btn-success btn-xs" href="{{ path('consulter_pub_rep',{'type' : 'reponse' , 'id' : reponse.id }) }}" target="_blank">Afficher</a></div>{% if reponse.iduser != app.user %}</div>{% else %} {% if publication_resolu is not null and publication_resolu.idreponse != reponse  %}  <div class="col-xs-4"> <a class="btn btn-primary btn-xs" href="{{ path('modifier_reponse',{'id_reponse' : reponse.id}) }}">Modifier</a></div><div class="col-xs-4"><form action="{{ path('supprimer_reponse',{'id_reponse' : reponse.id , 'id_p' : publicationaffiche.id }) }}" method="POST"> <button class="btn btn-danger btn-xs">Supprimer</button></form></div>{% endif %}</div>
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div style="overflow: scroll;height: 200px" class="col-md-12">
+                                                         {{  reponse.contenu | raw}}
+                                                </div>
+                                </article>
+                                    <hr>
+
+                            {% endif %}
+                            {% endfor %}
+                                </article>
+                            </div>
+                            </div>
+
+                                    <br style="clear:both">
+                                    <h3 style="margin-bottom: 25px; text-align: center;">ajouter commentaire</h3>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control col-md-12" id="name" value="{{ app.user.username }}" readonly>
+                                    </div>
+                                    {{ form_start (reponseform)}}
+                                    {{ form_errors(reponseform) }}
+
+                                    <div class="form-group">
+                                        {{ form_widget(reponseform.contenu) }}
+                                    </div>
+
+                                    <div class="form-actions fluid">
+                                        <div class="col-md-12 media-middle">
+                                            <button type="submit" class="btn btn-success">REPONDRE</button>
+                                        </div>
+                                    </div>
+                                    {{ form_end(reponseform) }}
+
+
+
+                    <!-- fef-1 -->
+                </div>
+            </div>
+    </div>
+    </div>
+    </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('Forumassets/plugins/trumbowyg/trumbowyg.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('Forumassets/js/bootstrap-tagsinput.js') }}"></script>
+{% endblock %}

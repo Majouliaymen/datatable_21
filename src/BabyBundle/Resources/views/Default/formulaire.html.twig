@@ -1,0 +1,115 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <link href="{{ asset('https://fonts.googleapis.com/icon?family=Material+Icons') }}" rel="stylesheet">
+    <link href="{{asset('css/style32.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/default32.css')}}" id="option_color">
+  <br>
+    <div id="affich">
+        <table>
+            <tr>
+
+                <td>
+                    <img alt="image" style="height:30px ;width: auto"  src="{{ asset(a) }}" class="img-responsive img-fullwidth">
+                </td>
+                <td>
+                            {{ name }}
+                </td>
+                <td>
+                            {{ pname }}
+                </td>
+
+            </tr>
+
+
+        </table>
+
+
+    </div>
+
+
+{{ form_start(form) }}
+    <div class="container">
+
+        <div class="col-sm-8" id="modify">
+
+            <div class="panel panel-default checkoutInfo">
+                <div class="panel-heading bg-color-3 border-color-3">
+              <center>      <h3 class="panel-title">Modifier votre Profil</h3></center>
+
+                </div>
+<div class="panel-body" >
+                    <div class="form-group">
+                        <div class="col-sm-6 col-xs-12">
+                            <label for="">Nom</label>
+                            {{ form_widget(form.nom) }}
+                            {#<input type="text" class="form-control border-color-1" id="">#}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-6 col-xs-12">
+                            <label for="">Prenom</label>
+                            {{ form_widget(form.prenom) }}
+                            {#<input type="text" class="form-control border-color-1" id="">#}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-6 col-xs-12">
+                            <label for="">Username</label>
+
+                            {{ form_widget(form.username) }}
+                            {#<input type="text" class="form-control border-color-1" id="">#}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-6 col-xs-12">
+                            <label for="">Adresse</label>
+                            {{ form_widget(form.adrese) }}
+                            {#<input type="text" class="form-control border-color-1" id="">#}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-6 col-xs-12">
+                            <label for="">Photo</label>
+                            {{ form_widget(form.image) }}
+                            {#<input type="text" class="form-control border-color-1" id="">#}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <label for="">Description</label>
+                            {{ form_widget(form.description) }}
+                            {#<input type="text" class="form-control border-color-1" id="">#}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-6 col-xs-12">
+                            <label for=""></label>
+                            {{ form_widget(form.save) }}
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ form_end(form) }}
+    <button  name="hide" id="btn-hide" >
+    hide </button>
+
+
+    <script>
+    $(document).ready(function() {
+        $('#modify').hide();
+    $('#btn-hide').click(function(){
+
+    $('#affich').slideToggle();
+    $('#modify').slideToggle();
+
+
+    });
+    });
+</script>
+{% endblock %}

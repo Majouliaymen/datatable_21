@@ -1,0 +1,3 @@
+{
+    "translations": {"es":{"HWIOAuthBundle":{"header.connecting":"Conectando","header.success":"Cuenta '%name%' conectada con \u00e9xito!","header.register":"Registrarse con la cuenta '%name%'","header.registration_success":"Se ha registrado y conectado la cuenta '%username%' con \u00e9xito!","connect.confirm.cancel":"Cancelar","connect.confirm.submit":"Conectar cuenta","connect.confirm.text":"\u00bfEst\u00e1 seguro de que desea conectar su cuenta de %service% '%name%' con su cuenta actual?","connect.registration.cancel":"Cancelar","connect.registration.submit":"Registrar cuenta"}}}
+}

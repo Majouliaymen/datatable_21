@@ -1,0 +1,56 @@
+{% extends '@Admin/Admin.html.twig' %}
+{% block cc %}
+    <script language="JavaScript" src="{{ asset('jquery-3.2.1.min.js') }}" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#datatable').dataTable();
+        });
+    </script>
+
+    <link rel="stylesheet" href="{{ asset('css/jquery.dataTables.min.css')}}" >
+    <script language="JavaScript" src="{{ absolute_url(asset('js/jquery.dataTables.min.js')) }}" type="text/javascript"></script>
+    <script language="JavaScript" src="{{ absolute_url(asset('js/dataTables.bootstrap.min.js')) }}" type="text/javascript"></script>
+    <script language="JavaScript" src="{{ absolute_url(asset('js/dataTables.responsive.min.js')) }}" type="text/javascript"></script>
+    <script language="JavaScript" src="{{ absolute_url(asset('js/responsive.bootstrap.min.js')) }}" type="text/javascript"></script>
+    {#<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}" />#}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/dataTables.bootstrap.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.bootstrap.min.css') }}" />
+    <!-- Bootstrap 3.3.6 -->
+
+    <table id="datatable" style="background: mediumvioletred" border="0" class="table table-striped">
+        <thead>
+        <tr class="active">
+
+            <th><i class="fa fa-angellist"></i></th>
+            <th ><i class="fa fa-phone"></i></th>
+            <th><i class="fa fa-map-marker"></i></th>
+            <th><i class="fa fa-male"></i><i class="fa fa-female"></i></th>
+            <th><i class="fa fa-image"></i></th>
+
+
+        </tr>
+        </thead>
+
+        {% for i in all %}
+            <tr >
+                <td >{{ i.nom }}</td>
+                <td >{{ i.tel }}</td>
+                <td>{{ i.adresse }}</td>
+                <td >{{ i.genre }}</td>
+                <td><img src="{{ asset(i.image) }}" height="50px" width="50px" > </td>
+
+
+            </tr>
+        {% endfor %}
+
+    </table>
+
+
+
+
+
+
+
+{% endblock %}

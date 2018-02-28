@@ -1,0 +1,48 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Gerer publication{% endblock %}
+{% block css %}{% endblock %}
+{% block content %}
+    <div class="main-container">
+
+        <div class="page-header">
+            <h1>liste des questions</h1>
+            <hr>
+        </div>
+    <div class="content-wrap">
+        <div class="row">
+            <div class="col-md-12">
+                            <table class="table table-bordred table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Publications</th>
+                                </tr>
+                                </thead>
+                                {% for publication in publication %}
+                                <tbody>
+
+                                <tr>
+
+                                <div class="row">
+                                    <div class="col-md-5">
+                                      <td class="row">
+                                          <img src="{{ asset( publication.iduser.image) }}" class="avatar img-circle" class="pull-left thumb m-r zoombox" style="width:50px" alt="avatar">
+                                          &nbsp;&nbsp;<a href="{{ path('consulter_pub_rep',{'type' : 'publication' , 'id' : publication.id }) }}" target="_blank"><span>{{ publication.titre }}</span></a>
+                                    </div>
+                                    <div class="col-md-4 pull-right">
+                                        <form class="col-md-3" action="{{ path('gerer_location_publication',{'id_pub' : publication.id , 'action' : 'approuver'}) }}" method="POST" ><button type="submit" class="btn btn-success btn-rounded">Approuvé</button></form>
+                                        <form class="col-md-3" action="{{ path('gerer_location_publication',{'id_pub' : publication.id , 'action' : 'deapprouver'}) }}" method="POST"><button type="submit" class="btn btn-danger btn-rounded">Deapprouvé</button></form>
+                                    </div>
+                                      </td>
+                                </div>
+                                </tr>
+
+
+                                </tbody>
+                                    {% endfor %}
+                            </table>
+
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

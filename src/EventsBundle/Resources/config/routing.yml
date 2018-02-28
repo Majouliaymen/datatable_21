@@ -1,0 +1,55 @@
+events_homepage:
+    path:     /
+    defaults: { _controller: EventsBundle:Default:index }
+events:
+    path:     /events
+    defaults: { _controller: EventsBundle:Events:Event }
+ajoutE:
+    path:     /ajoutE
+    defaults: { _controller: EventsBundle:Events:AjoutE }
+listE:
+    path:     /listE
+    defaults: { _controller: EventsBundle:Events:listE }
+detailE:
+    path:     /detailE/{{id}}
+    defaults: { _controller: EventsBundle:Events:DetailE }
+maevent:
+    path:     /maevent
+    defaults: { _controller: EventsBundle:Events:maevent }
+suppE:
+    path:     /suppE/{{id}}
+    defaults: { _controller: EventsBundle:Events:suppE }
+updateEE:
+    path:     /updateE/{{id}}
+    defaults: { _controller: EventsBundle:Events:updateE }
+participate:
+    path:     /particiate{id}
+    defaults: { _controller: EventsBundle:Events:participate }
+
+allusers:
+    path:     /allusers
+    defaults: { _controller: EventsBundle:Events:allusers }
+maparti:
+    path:     /maparti/
+    defaults: { _controller: EventsBundle:Events:mapart }
+
+recherche_Ajax1:
+        path:     /listE
+        defaults: { _controller: EventsBundle:Events:searchAjax}
+
+dql:
+        path:     /dqll
+        defaults: { _controller: EventsBundle:Events:dqlE}
+
+_recherche:
+        path:     /recherche
+        defaults: { _controller: EventsBundle:Events:recherche}
+_ajax:
+        path: /recherche/search
+        defaults: { _controller: EventsBundle:Events:rechercheAjax}
+
+
+translateajax:
+    path:     /translateajax
+    defaults: { _controller: EventsBundle:Events:translateajax}
+    methods: [post]

@@ -1,0 +1,148 @@
+{% extends '::layout.html.twig' %}
+
+{% block content %}
+
+
+
+    {% block  section %}
+
+        <div class="main-content">
+
+        <!-- Section: inner-header -->
+        <section class="inner-header divider parallax layer-overlay overlay-dark-5"
+                 data-bg-img="{{ asset('images/bg/bg3.jpg') }}">
+            <div class="container pt-70 pb-20">
+                <!-- Section Content -->
+                <div class="section-content">
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <center><h3 class="title text-white">Liste des Jardins enfants</h3></center>
+                            <ul class="list-inline text-white">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% for jardin in jardins %}
+            <div class="modal fade bs-example-modal-lg" id={{ jardin.id }} tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="panel panel-default formPanel">
+                            <div class="panel-heading bg-color-4 border-color-4">
+                                <h3 class="panel-title">{{ jardin.nom }}</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="widget dark">
+                                <div class="col col-lg-5">
+                                    <img alt="image" src="{{ asset(jardin.logo) }}"
+                                         class="img-responsive img-fullwidth">
+
+                                </div>
+
+
+                                <div class="overlay">
+                                    <div class="btn-add-to-cart-wrapper">
+                                        <a class="btn btn-theme-color-red btn-sm btn-flat pl-20 pr-20 btn-add-to-cart text-uppercase font-weight-700">Add
+                                            To Cart</a>
+                                    </div>
+                                    <div class="col col-lg-7">
+
+                                        <p class="product-title mt-0"><img alt=""
+                                                                           src="{{ asset('images/flat-color-icons-svg/about.svg') }}"
+                                                                           height="30px"
+                                                                           width="30px">{{ jardin.description }}
+                                        </p>
+                                    </div>
+
+
+                                 
+                                        <ul class="list-inline mt-5">
+                                            <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-theme-color-red mr-5"></i> <a class="text-gray" href="#">{{ jardin.numtel }}</a> </li>
+                                            <li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-theme-color-lemon mr-5"></i> <a class="text-gray" href="#">{{ jardin.adressemail }}</a> </li>
+                                            <li class="m-0 pl-10 pr-10"> <i class="fa fa-map-pin text-theme-color-orange mr-5"></i> <a class="text-gray" href="#">{{ jardin.adresse }}</a> </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        <section class="">
+            <div class="container mt-30 mb-30 p-30">
+                <div class="section-content">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-9">
+                            <div class="row multi-row-clearfix">
+                                <div class="products">
+                                    {% for jardin in jardins %}
+                                        <div class="col-xs-12 col-sm-6 col-md-6">
+
+                                            <div class="widget-title">
+
+                                            <h4 class=" title-dots mt-30"><span>{{ jardin.nom }} 4</span></h4>
+
+                                            </div>
+
+                                            <article class="post mb-30">
+
+                                                <div class="entry-header">
+                                                    <div class="post-thumb">
+                                                        <img style="width: 250px;height: 250px;"
+                                                             class="img-fullwidth img-responsive"
+                                                             src="{{ asset(jardin.logo) }}" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                                <div class="entry-content">
+                                                    <h5 class="entry-title text-uppercase mt-0"><a
+                                                                href="#">{{ jardin.adresse }}</a></h5>
+                                                    <ul class="list-inline font-12 mb-20 mt-10">
+
+                                                        <p>{{ jardin.description }}</p>
+                                                        <ul class="list-inline like-comment pull-left flip font-12">
+
+                                                            <a href="#{{ jardin.id }}"
+                                                               class="btn btn-flat btn-colored btn-theme-color-lemon mt-15"
+                                                               data-toggle="modal">Consulter</a>
+                                                            <a href="{{ path('sendmsg',{'id':jardin.proprietaire}) }}"
+                                                               class="btn btn-flat btn-colored btn-theme-color-lemon mt-15"
+                                                               data-toggle="modal">Contacter</a>
+
+                                                        </ul>
+                                                    </ul>
+                                                </div>
+                                            </article>
+                                        </div>
+                                    {% endfor %}
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <!-- end main-content -->
+
+        </div>
+        <div class="widget">
+            <div id="div_chart"></div>
+
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <script type="text/javascript">
+                {{ gc_draw(piechart, 'div_chart') }}
+            </script>
+
+        </div>
+
+    {% endblock %}
+{% endblock %}

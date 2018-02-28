@@ -1,0 +1,12 @@
+admin_homepage:
+    path:     /
+    defaults: { _controller: AdminBundle:Default:index }
+page_admin:
+    path:     /admin
+    defaults: { _controller: AdminBundle:Default:Admin }
+ListDo:
+    path:     /listDo
+    defaults: { _controller: AdminBundle:Default:ListDo }
+ListEv:
+    path:     /listEv
+    defaults: { _controller: AdminBundle:Default:ListEv }

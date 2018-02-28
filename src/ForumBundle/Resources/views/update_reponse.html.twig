@@ -1,0 +1,24 @@
+{% extends 'layout.html.twig' %}
+{% block title %}modifier reponse{% endblock %}
+{% block content %}
+    <div class="main-container">
+        <div class="page-header">
+            <ol class="breadcrumb">
+                <li><a href="{{ path('consulter_forum') }}">Forum</a></li>
+                <li><a href="{{ path('consulter_publicationforum',{'id_publication' : publication.id }) }}">publication</a></li>
+                <li class="active">Modifier reponse</li>
+            </ol>
+        </div>
+        <div class="content-wrap panel">  <!--START: Content Wrap-->
+            {{ form_start(form_update , {'method':'POST'}) }}
+            {{ form_errors(form_update) }}
+            <div class="form-group">
+                <label for="titree">Contenu</label>
+                {{ form_widget(form_update.contenu) }}
+            </div>
+            <button type="submit" class="btn btn-primary col-lg-12">Mise à jour</button>
+
+            {{ form_end(form_update) }}
+        </div>
+    </div>
+{% endblock %}

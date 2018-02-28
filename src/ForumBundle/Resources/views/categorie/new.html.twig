@@ -1,0 +1,33 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>Categorie creation</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" />
+
+    <h4>
+        <span>Catégories</span>
+        <a href="#"></a>
+    </h4>
+    <div class="css-treeview">
+        <ul>
+            {% for cat in categorie %}
+                {% if cat.type=='categorie'%}
+                    <li><input type="radio" id="{{ cat.id }}" name="categorie" value="{{ cat.id }}" /><label for="{{ cat.id }}"><a href="{{ path('consulter_categoriekb') }}">{{ cat.nom }}</a></label>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+
+    </div>
+
+    <ul>
+        <li>
+            <a href="{{ path('categorie_index') }}">Back to the list</a>
+        </li>
+    </ul>
+    {{ form_end(form) }}
+
+{% endblock %}

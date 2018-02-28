@@ -1,0 +1,123 @@
+
+{% extends '::layout.html.twig' %}
+
+
+{% block content %}
+    {{ form_start(form) }}
+    <br>
+    <br>
+    <center>
+    <div class="col-xs-5 centered" >
+
+        <div class="homeContactContent centered" >
+
+
+            <div class="form-group ">
+                <i class="fa fa-angellist"></i>
+                {#
+                            <input type="text"  value="{{ produ.nom }}"  name="nom" class="form-control border-color-2 not-brdr-radius" id="exampleInputEmail1" placeholder="First name">
+                #}
+
+                {{ form_widget(form.nom,{'attr': {'class': 'form-control border-color-4 not-brdr-radius','placeholder':'First name'}}) }}
+
+
+            </div>
+
+
+
+            <div class="form-group">
+                <i class="fa fa-map-marker"></i>
+                {#
+                            <input type="text"  value="{{ produ.adresse }}"  name="adresse" class="form-control border-color-6 not-brdr-radius" id="exampleInputEmail1" placeholder="First name">
+                #}
+
+                {{ form_widget(form.adresse,{'attr': {'class': 'form-control border-color-2 not-brdr-radius','placeholder':'Adresse'}} )}}
+
+            </div>
+
+
+
+            <div class="form-group">
+                <i class="fa fa-phone" ></i>
+                {# <input type="text" value="{{ produ.tel }}"   name="tel" class="form-control border-color-4 not-brdr-radius" id="exampleInputEmail1">#}
+
+                {{ form_widget(form.tel,{'attr': {'class': 'form-control border-color-5 not-brdr-radius','placeholder':'télephone'}} )}}
+
+            </div>
+
+
+
+            <div class="form-group">
+                <i class="fa fa-book"></i>
+                {#<textarea  name="description" class="form-control border-color-1 not-brdr-radius" id="exampleInputEmail1" value="{{ produ.description }}">{{ produ.description }} </textarea>#}
+                {{ form_widget(form.description,{'attr': {'class': 'form-control border-color-6 not-brdr-radius','placeholder':'description'}}) }}
+            </div>
+
+
+            <div class="form-group">
+
+                <strong >categorie</strong>
+
+
+
+                {#<textarea  name="description" class="form-control border-color-1 not-brdr-radius" id="exampleInputEmail1" value="{{ produ.description }}">{{ produ.description }} </textarea>#}
+                {{ form_widget(form.categorie,{'attr': {'class': 'form-control border-color-1 not-brdr-radius','placeholder':'categorie'}}) }}
+
+
+            </div>
+
+
+            <strong >genre: <i class="fa fa-male" aria-hidden="true"></i>
+                <i class="fa fa-female" aria-hidden="true"></i></strong><br>
+            {#Garçon <i class="fa fa-male"></i><input value="Garçon" name="genre" type="radio" class=" border-color-1 " {% if form.genre == "Garçon" %}checked="checked"{% endif %} >#}
+            {#Fille <i class="fa fa-female"></i> <input value="Fille" name="genre" type="radio" class=" border-color-1 not-brdr-radius" {% if form.genre == "Fille" %}checked="checked"{% endif %} >#}
+
+
+            <div class="form-group">
+
+
+                {#<textarea  name="description" class="form-control border-color-1 not-brdr-radius" id="exampleInputEmail1" value="{{ produ.description }}">{{ produ.description }} </textarea>#}
+                {{ form_widget(form.genre,{'attr': {'class': 'form-control border-color-3 not-brdr-radius'}}) }}
+            </div>
+
+            {#<input type="file" value="{{ produ.image }}"   name="tel" class="form-control border-color-4 not-brdr-radius" id="exampleInputEmail1">#}
+
+
+            <strong >image:<img src="{{ asset(aze) }}" height="100px" width="100px"></strong><br>
+            <div class="form-group">
+                <i class="fa fa-image"></i>
+                {#<textarea  name="description" class="form-control border-color-1 not-brdr-radius" id="exampleInputEmail1" value="{{ produ.description }}">{{ produ.description }} </textarea>#}
+                {{ form_widget(form.image,{'attr': {'class': 'form-control border-color-1 not-brdr-radius',novalidate: 'novalidate'}})}}
+
+            </div>
+
+            {{ form_widget(form.Valider,{'attr': {'class': 'btn btn-success not-rounded right'}})}}
+            {#<input type="submit" class="btn btn-success not-rounded" value="Modifier">#}
+
+            <br><br><br><br>
+
+
+
+
+
+
+
+
+
+
+            {#<input type="submit" class="btn btn-success not-rounded" value="Modifier">#}
+
+
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <br>
+
+    {{ form_end(form) }}
+{% endblock %}

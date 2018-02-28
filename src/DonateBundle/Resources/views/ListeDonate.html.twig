@@ -1,0 +1,415 @@
+
+{% extends 'layout.html.twig' %}
+
+   {% block javascripts %}
+
+       <script type="text/javascript">
+
+           $("#fille").hide();
+           $(' input[type=radio]').on("change", function () {
+
+               if ($("input:checked").val() === "fille"){
+
+                   $("#fille").show();
+               }
+
+               else {
+                   $("#prix").hide();
+
+               }
+
+           });
+
+
+       </script>
+
+   {% endblock %}
+{% block  content %}
+
+<link rel="stylesheet" href="{{ asset('css/jquery.dataTables.min.css')}}" >
+<script language="JavaScript" src="{{ absolute_url(asset('js/jquery.dataTables.min.js')) }}" type="text/javascript"></script>
+<script language="JavaScript" src="{{ absolute_url(asset('js/dataTables.bootstrap.min.js')) }}" type="text/javascript"></script>
+<script language="JavaScript" src="{{ absolute_url(asset('js/dataTables.responsive.min.js')) }}" type="text/javascript"></script>
+<script language="JavaScript" src="{{ absolute_url(asset('js/responsive.bootstrap.min.js')) }}" type="text/javascript"></script>
+{#<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}" />#}
+<link rel="stylesheet" type="text/css" href="{{ asset('css/dataTables.bootstrap.min.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.bootstrap.min.css') }}" />
+    {% block  section %}
+
+        <div id="aa"></div>
+
+        <section class="inner-header divider parallax layer-overlay overlay-dark-3" data-bg-img="{{ asset('images/bg/hand1.jpg') }}" style="background-image: {{ asset('&quot;images/bg/bg3.jpg&quot') }}; background-position: 50% 30px;">
+            <div class="container pt-70 pb-20">
+                <!-- Section Content -->
+                <div class="section-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 class="title text-white">About</h2>
+                            <ol class="breadcrumb text-left text-theme-color-red mt-10">
+                                <li><a href="#"  class=" text-white">home</a></li>
+                                <li><a href="#"  class=" text-white">Donation</a></li>
+                                <li><a href="{{ path('listD') }}"  class=" text-white">Liste Donations</a></li>
+                    </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+
+
+
+
+<br>
+        <br><br>
+
+
+    <div class="row" >
+
+
+        <div class="col-sm-12 col-md-9">
+            <div class="row multi-row-clearfix">
+
+                <div class="products">
+
+                    {% if produit is  empty  %}
+                   <center> <strong >  pas des donations </strong></center>
+                    {% else %}
+
+                    {% for a in produit %}
+
+
+                    <div class="getDonation {{ a.genre }} {{ a.categorie }} col-sm-6 col-md-4 col-lg-4 mb-30">
+
+                        <div class="product pb-0">
+
+                            <div class="product-thumb">
+                                <img alt="" src="{{ asset(a.image) }}" class="img-responsive img-fullwidth">
+                                <div class="overlay">
+
+
+
+
+
+
+
+                                    <div class="btn-product-view-details">
+                                        <a class="btn btn-default btn-theme-color-orange btn-sm btn-flat pl-20 pr-20 btn-add-to-cart text-uppercase font-weight-700" href="#{{ a.id }}" data-toggle="modal"> details</a>
+                                    </div>
+
+
+
+
+                                </div>
+                            </div>
+                            <div class="product-details text-center bg-lighter pt-15 pb-10">
+                                <a href="#">   <strong style="color: #1d78cb">{{  (a.nomuser) }}</strong></a>
+                            <p style="color: red"><i class="fa fa-map-marker mr-5"></i> {{ a.adresse }} </p>
+                                <p style="color: #00CC00"> <i class="fa fa-calendar mr-5"></i>{{ a.datenow|date('D-m-Y') }} </p>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+{% endfor %}
+
+
+{#   les fille  #}{% endif %}
+
+
+
+
+
+
+
+
+
+
+                {% for a in produit %}
+
+
+
+                        <div class="modal fade bs-example-modal-lg" id={{ a.id }} tabindex="-1" role="dialog"  aria-labelledby="myLargeModalLabel" >
+                            <div class="modal-dialog modal-md">{#tebdila#}
+                                <div class="modal-content row-md-24"  >
+
+                                    <div class="product row-lg" >
+                                        
+                                        <div class="col-md-20">{#tebdila#}
+                                            <div class="product-summary row-lg-7">
+                                                <h2 >{{ a.nom }}</h2>
+
+                                                <div class="short-description">
+                                                    <p>{{ a.description }}</p>
+                                                </div>
+                                                <div class="category"><strong style="color: #1a1a1a">Nom Donateur:</strong> <a href="#">{{ a.nomuser }}</a>,</div>
+
+                                                <div class="category"><strong style="color: #00CC00">Category:</strong> <a href="#">{{ a.categorie }}</a>,</div>
+                                                <div class="tags"><strong style="color: #5D9CEC">genre:</strong> <a href="#">{{ a.genre }}</a>,</div>
+                                                <div class="cart-form-wrapper mt-30">
+                                                    <form enctype="multipart/form-data" method="post" class="cart">
+                                                        <input type="hidden" value="productID" name="add-to-cart">
+                                                        <table class="table variations no-border">
+                                                            <tbody>
+                                                            <tr>
+                                                                <td class="name"><img alt="" src="{{ asset('images/flat-color-icons-svg/cell_phone.svg') }}" height="30px" width="30px">tel</td>
+                                                                <td>
+                                                                    {{ a.tel }}
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td class="name">
+                                                                   {# <img alt="" src="{{ asset('images/flat-color-icons-svg/globe.svg') }}"  height="30px" width="30px" >#} <i class="fa fa-map-marker mr-7" style="color: red"></i>adresse
+                                                                </td>
+
+                                                                <td>
+                                                                    {{ a.adresse }}
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td class="name"><img alt="" src="{{ asset('images/flat-color-icons-svg/calendar.svg') }}" height="30px" width="30px">date</td>
+                                                                <td >
+                                                                    {{ a.datenow|date('d-m-y') }}
+                                                                </td>
+                                                            </tr>
+
+
+                                                            </tbody>
+                                                        </table>
+
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+            <div class="navigation  text-center" >
+            <strong style="color: red"> {{ knp_pagination_render(produit) }}</strong>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+        {# display navigation #}
+
+
+
+        <div class="col-sm-12 col-md-3"  >
+            <div class="sidebar sidebar-right mt-sm-30" >
+                <div class="widget">
+                    <h5 class="widget-title line-bottom">Search </h5>
+                    <div class="search-form">
+                        <a href="#search" data-toggle="modal">
+                            <div class="input-group">
+                                <input type="text" placeholder="Click to Search"   id="nom" class="form-control search-input">
+                                <span class="input-group-btn">
+                                <button type="submit" class="btn search-button"><i class="fa fa-search"></i></button>
+                        </span>
+                            </div>
+                        </a>
+                    </div>
+                    <label class="radio-inline"><input type="radio" name="sex" value="homme">Fille</label><br>
+                    <label class="radio-inline"><input type="radio" name="sex" value="femme">Garçon</label><br>
+                    <label class="radio-inline"><input type="radio" name="sex" value="tous">Tous</label>
+
+                    <select id="g" class="form-control">
+
+                        <option name="tous" >Tous </option>
+                        <option name="outils"> Outils Scolaire </option>
+                        <option name="clothes"> Clothes </option>
+                        <option name="autre">Autre </option>
+
+                    </select>
+
+                </div>
+                <div class="widget">
+
+
+                </div>
+
+           {#     <div class="widget">
+                    <h5 class="widget-title line-bottom">Photos about Donation</h5>
+                    <div id="flickr-feed" class="clearfix">
+                        <!-- Flickr Link -->
+                        <script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=9&amp;display=latest&amp;size=s&amp;layout=x&amp;source=user&amp;user=52617155@N08">
+                        </script><!-- DEVELOPER WARNING: The Flickr badge code is likely to be deprecated, and we recommend changing to a new method to embed photo as soon as possible.  See https://www.flickr.com/api for information on how to access Flickr data. Thanks. -->
+                        <div class="flickr_badge_image" id="flickr_badge_image1"><a href="https://www.flickr.com/photos/we-are-envato/15647274066/"><img src="https://farm4.staticflickr.com/3940/15647274066_2ee48c3fe9_s.jpg" alt="Une photo sur Flickr" title="Halloween 2014 at Envato in Melbourne" height="75" width="75"></a></div>
+                        <div class="flickr_badge_image" id="flickr_badge_image2">
+                            <a href="https://www.flickr.com/photos/we-are-envato/15485436268/"><img src="https://farm4.staticflickr.com/3945/15485436268_846ccca178_s.jpg" alt="Une photo sur Flickr" title="Halloween 2014 at Envato in Melbourne" height="75" width="75"></a></div><div class="flickr_badge_image" id="flickr_badge_image3">
+                            <a href="https://www.flickr.com/photos/we-are-envato/15668911091/"><img src="https://farm4.staticflickr.com/3956/15668911091_4ef20118b5_s.jpg" alt="Une photo sur Flickr" title="Halloween 2014 at Envato in Melbourne" height="75" width="75"></a></div>
+                    </div>
+                </div>#}
+            </div>
+        </div>
+
+
+    <!-- Page content -->
+
+
+        <!-- Small modal -->
+
+
+
+
+
+
+
+        <div class="modal fade bs-example-modal-lg " id="search" tabindex="-1" role="dialog"  aria-labelledby="myLargeModalLabel" >
+            <div class="modal-dialog modal-lg ">{#tebdila#}
+                <div class="modal-content  "  >
+
+                    <table id="datatable" style="background: mediumvioletred" border="0" class="table table-striped">
+                        <thead>
+                        <tr class="active">
+
+                            <th><i class="fa fa-angellist"></i></th>
+                            <th ><i class="fa fa-phone"></i></th>
+                            <th><i class="fa fa-map-marker"></i></th>
+                            <th><i class="fa fa-male"></i><i class="fa fa-female"></i></th>
+                            <th><i class="fa fa-image"></i></th>
+
+
+                        </tr>
+                        </thead>
+
+                        {% for i in all %}
+                            <tr >
+                                <td >{{ i.nom }}</td>
+                                <td >{{ i.tel }}</td>
+                                <td>{{ i.adresse }}</td>
+                                <td >{{ i.genre }}</td>
+                                <td><img src="{{ asset(i.image) }}" height="50px" width="50px" > </td>
+
+
+                            </tr>
+                        {% endfor %}
+
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#datatable').dataTable();
+            });
+
+            $('input[type=radio][name=sex]').change(function() {
+                if (this.value == 'homme') {
+                    $(".getDonation").each(function() {
+                        if ($( this ).hasClass( "Garçon" )){
+                            $(this).show()
+                        }else {
+                            $(this).hide()
+                        }
+                    });
+                }
+                else if (this.value == 'femme') {
+                    $(".getDonation").each(function() {
+                        if ($( this ).hasClass( "Fille" )){
+                            $(this).show()
+                        }else {
+                            $(this).hide()
+                        }
+                    });
+                }
+                else{
+                    $(".getDonation").each(function() {
+                        $(this).show()
+                    });
+                }
+            });
+
+
+        </script>
+
+
+
+<script>
+    $("#g").change(function(){
+      if( $('option:selected',this).val()=='Clothes'){
+
+
+
+          $(".getDonation").each(function() {
+              if ($( this ).hasClass( "clothes" )){
+                  $(this).show()
+              }else {
+                  $(this).hide()
+              }
+          });
+
+
+      }
+
+
+    else  if ($('option:selected',this).val()=='Outils Scolaire'){
+
+
+
+
+          $(".getDonation").each(function() {
+              if ($( this ).hasClass( "outils school")){
+                  $(this).show()
+              }else {
+                  $(this).hide()
+              }
+          });
+
+        }
+
+      else  if ($('option:selected',this).val()=='Autre'){
+
+
+
+
+          $(".getDonation").each(function() {
+              if ($( this ).hasClass( "Autre" )){
+                  $(this).show()
+              }else {
+                  $(this).hide()
+              }
+          });
+
+      }
+
+        else {
+
+
+          $(".getDonation").each(function() {
+              $(this).show()
+          });
+      }
+
+
+
+
+    });
+</script>
+
+
+
+    {% endblock  %}
+
+{% endblock  %}

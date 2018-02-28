@@ -1,0 +1,46 @@
+baby_homepage:
+    path:     /
+    defaults: { _controller: BabyBundle:Default:layout }
+baby:
+    path:     /baby
+    defaults: { _controller: BabyBundle:Default:formulaire }
+affiche:
+    path:     /affiche
+    defaults: { _controller: BabyBundle:Default:Affiche }
+delete:
+    path:     /delete/{id}
+    defaults: { _controller: BabyBundle:Default:delet }
+ajout:
+    path:     /ajout
+    defaults: { _controller: BabyBundle:Default:Ajout }
+affiche2:
+    path:     /affiche2
+    defaults: { _controller: BabyBundle:Default:Afficher }
+update:
+    path:     /update/{id}
+    defaults: { _controller: BabyBundle:Default:modifier }
+babyDemande:
+    path:     /babyDemande
+    defaults: { _controller: BabyBundle:Demande:formulaire }
+afficheDemande:
+    path:     /afficheDemande
+    defaults: { _controller: BabyBundle:Demande:Affiche }
+deleteDemande:
+    path:     /deleteDemande/{id}
+    defaults: { _controller: BabyBundle:Demande:delet }
+ajoutDemande:
+    path:     /ajoutDemande
+    defaults: { _controller: BabyBundle:Demande:Ajout }
+affiche2Demande:
+    path:     /affiche2Demande
+    defaults: { _controller: BabyBundle:Demande:Afficher }
+updateDemande:
+    path:     /updateDemande/{id}
+    defaults: { _controller: BabyBundle:Demande:modifier }
+pdf:
+    path:     /pdf
+    defaults: { _controller: BabyBundle:Default:pdf }
+
+_ajax:
+        path: /recherche/search
+        defaults: { _controller: BabyBundle:Default:rechercheAjax}

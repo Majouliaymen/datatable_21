@@ -1,0 +1,177 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Dashboard{% endblock %}
+{% block css %}{% endblock %}
+{% block content %}
+    <div class="main-container">    <!-- START: Main Container -->
+
+
+        <div class="content-wrap">  <!--START: Content Wrap-->
+            <div class="panel">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                        <div class="hidden-xs visible-sm visible-md visible-lg ">
+                            <ul class="nav nav-tabs nav-info item-color tabs-stacked">
+                                <li class="active"><a data-toggle="pill" href="#menu1"><i class="fa fa-bar-chart-o"></i> &nbsp;Summary</a></li>
+                                <li><a data-toggle="pill" href="#menu2"><i class="fa fa-file-o"></i> &nbsp;Popular Categoris/sous-categories</a></li>
+                            </ul>
+                        </div>
+                        <div class="visible-xs hidden-sm hidden-md hidden-lg ">
+                            <ul class="nav nav-tabs nav-info item-color tabs-stacked">
+                                <li class="active"><i class="fa fa-bar-chart-o"></i> <div>Summary</div></li>
+                                <li><i class="fa fa-file-o"></i> <div>&nbsp;</div></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content">
+                    <div id="menu1" class="tab-pane fade in active">
+                        <div class="tab-content mb30">
+                            <div class="row">
+                                <!-- Summary - STARTS -->
+                                <div class="col-sm-4">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div>
+                                                <table class="responsive-table">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td scope="row" align="left" width="230">Total Number of Categories</td>
+                                                        <td align="right">{{ categories | length }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td scope="row" align="left">Total Number of Parent Categories</td>
+                                                        <td align="right">{{ categories_parent | length }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td scope="row" align="left"> Total Number of sub-categories</td>
+                                                        <td align="right">{{ sous_categories | length }}</td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Summary - ENDS -->
+
+                                <!-- Graphical Chart - STARTS -->
+                                <div class="col-sm-8">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="mt15">
+                                                <div id="piechart" style="width: 450px; height: 200px;"></div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Graphical Chart - ENDS -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="menu2" class="tab-pane fade">
+                        <div class="tab-content mb30">
+                            <div class="row">
+                                <!-- Column 1 - STARTS -->
+                                <div class="col-sm-7 col-md-7 col-lg-7">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="table-responsive manage">
+                                                <table class="table table-hover">
+                                                    <thead>
+                                                    <tr>
+                                                        <th width="55" class=""></th>
+                                                        <th width="55" class="">ID</th>
+                                                        <th>Nom Categorie</th>
+                                                        <th>Type</th>
+                                                        <th width="80" class="">Nombre Article</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <h4>TOP 10 Categories / sous categories</h4>
+                                                    {% set i=1 %}
+                                                    {% for topcategorie in topcategorie %}
+                                                        <tr>
+                                                            <td>{{ i }}</td>{% set i=i+1 %}
+                                                            <td>{{ topcategorie.id }}</td>
+                                                            <td><a>{{ topcategorie.cat.idcategorie.nom }}</a></td>
+                                                            <td>{% if topcategorie.cat.idcategorie.getIdCat() is null %}<b>Categorie</b>{% else %}<b>sous-categorie</b><br>Parent : {{  topcategorie.cat.idcategorie.getIdCat().nom }}  {% endif %}</td>
+                                                            <td>{{ topcategorie.nb }}</td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Column 1 - ENDS -->
+
+                                <!-- Column 2 (Graphical Chart) - STARTS -->
+                                <div class="col-sm-12 col-md-12 col-lg-5 table-responsive">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="mt15">
+                                                <h5 class="subtitle mb5 text-center">Popular Categorie/sous-Categorie</h5>
+                                                <div id="barchart"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Column 2 (Graphical Chart) - ENDS -->
+                            </div>
+                        </div>
+                    </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>  <!-- END: Main Container -->
+{% endblock %}
+{% block javascripts %}
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+ <script type="text/javascript">
+        // google.charts.load('current', {'packages':['corechart']});
+     //   google.charts.setOnLoadCallback(drawChart);
+
+      //  function drawChart() {
+
+          //  var data = google.visualization.arrayToDataTable([
+             //   ['Task', 'Hours per Day'],
+               // ['PARENT',     {{ categories_parent | length }}],
+              //  ['SUB-CATEGORIES',      {{ sous_categories | length }}],
+
+
+           // ]);
+
+       //     var options = {
+        //        title: 'PARENT/SUB-CATEGORIES'
+          //  };
+
+            //var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+//            chart.draw(data, options);
+  //      }
+    </script>
+
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script>
+        var dataview = [
+            {% for topcategorie in topcategorie | reverse %}
+            {
+                "Name": " Nom : {{ topcategorie.cat.idcategorie.nom }}  / {% if topcategorie.cat.idcategorie.idCat is null  %} Type : categorie{% else %}Type : sous-categorie{% endif %}  / Nombre D'articles  ",
+                "totalp": {{topcategorie.nb }}
+            },
+            {% endfor %}
+
+        ]
+    </script>
+    <script src="{{ asset('Forumassets/js/chartbarquestionvue.js') }}"></script>
+{% endblock %}
+

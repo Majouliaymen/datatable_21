@@ -1,0 +1,150 @@
+
+{% extends 'layout.html.twig' %}
+
+
+{% block  content %}
+    {% block  section %}
+        <section class="inner-header divider parallax layer-overlay overlay-dark-3" data-bg-img="{{ asset('images/bg/hand1.jpg') }}" style="background-image: {{ asset('&quot;images/bg/bg3.jpg&quot') }}; background-position: 50% 30px;">
+            <div class="container pt-70 pb-20">
+                <!-- Section Content -->
+                <div class="section-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 class="title text-white">About</h2>
+                            <ol class="breadcrumb text-left text-white mt-10">
+                                <li><a href="#" style="color: #0000F0">Home</a></li>
+                                <li><a href="{{ path('donate') }}"  style="color:#0000F0 ">Donation</a></li>
+
+                                <li><a href="{{ path('donate') }}"  style="color: #0000F0">Publier Donation</a></li>
+
+
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+
+
+    {% endblock  %}
+
+    <br>
+    {{ form_start(form) }}
+
+
+
+    <div class="row">
+        <div class="col-sm-1 col-xs-12"></div>
+        <div class="col-sm-5 col-xs-12">
+            <div class="form-group">
+                <i class="fa fa-angellist"></i>
+{#
+                <input type="text" class="form-control border-color-1" id="exampleInputEmail1" placeholder="First name">
+#}
+                {{ form_widget(form.nom, {'attr': {'class': 'form-control border-color-1','placeholder':'nom objet à donnée'}}) }}
+
+            </div>
+        </div>
+        <div class="col-sm-5 col-xs-12">
+            <div class="form-group">
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                {#<input type="text" class="form-control border-color-2" id="exampleInputEmail2" placeholder="Email address">#}
+                {{ form_widget(form.adresse, {'attr': {'class': 'form-control border-color-2','placeholder':'adresse'}}) }}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-1 col-xs-12"></div>
+        <div class="col-sm-5 col-xs-12">
+            <div class="form-group">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+{#
+                <input type="text" class="form-control border-color-5" id="exampleInputEmail3" placeholder="Phone">
+#}
+
+                {{ form_widget(form.tel, {'attr': {'class': 'form-control border-color-2','placeholder':'téléphone'}}) }}
+            </div>
+
+
+        </div>
+
+
+        <div class="col-sm-5 col-xs-12">
+            <div class="form-group">
+                <i class="fa fa-male" aria-hidden="true"></i>
+                <i class="fa fa-female" aria-hidden="true"></i>
+
+                {#<input type="text" class="form-control border-color-6" id="exampleInputEmail4" >#}
+                {{ form_widget(form.genre, {'attr': {'class': 'form-control border-color-4','placeholder':'téléphone'}}) }}
+
+            </div>
+        </div>
+        </div>
+
+
+    <div class="row">
+
+        <div class="col-sm-1 col-xs-12"></div>
+        <div class="col-sm-5 col-xs-12">
+            <div class="form-group">
+
+
+                {#<input type="text" class="form-control border-color-6" id="exampleInputEmail4" >#}
+                {{ form_widget(form.categorie, {'attr': {'class': 'form-control border-color-5','placeholder':'téléphone'}}) }}
+
+            </div>
+        </div>
+
+
+
+        <div class="col-sm-5 col-xs-12">
+            <div class="form-group">
+
+
+                {#<input type="text" class="form-control border-color-6" id="exampleInputEmail4" >#}
+                {{ form_widget(form.image, {'attr': {'class': 'form-control border-color-3','placeholder':'téléphone'}}) }}
+
+            </div>
+        </div>
+        </div>
+
+
+
+    <div class="row">
+    <div class="col-sm-1 col-xs-12"></div>
+
+
+    <div class="col-sm-10 col-xs-12">
+    <div class="form-group">
+
+        <i class="fa fa-comments" aria-hidden="true"></i>
+
+
+        {{ form_widget(form.description, {'attr': {'class': 'form-control border-color-3','placeholder':'description'}}) }}
+    </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-9 col-xs-12"></div>
+
+        <div class="col-sm-2 col-xs-12">
+            <div class="formBtnArea">
+                {#<button type="submit" class="btn btn-primary">Send Message</button>#}
+                {{ form_widget(form.valider, {'attr': {'class': 'btn btn-primary'}}) }}
+
+            </div>
+        </div>
+
+    </div>
+    </div>
+    {{ form_end(form) }}
+
+
+
+
+
+{% endblock  %}

@@ -1,0 +1,184 @@
+
+{% extends '::layout.html.twig' %}
+
+{% block javascripts %}
+    <!-- REQUIRED JS SCRIPTS -->
+    <script type="text/javascript">
+
+        $("#prix").hide();
+
+        $(' input[type=radio]').on("change", function () {
+
+            if ($("input:checked").val() === "Payant"){
+
+                $("#prix").show();
+            }
+
+            else {
+                $("#prix").hide();
+
+            }
+
+        });
+
+
+    </script>
+{% endblock %}
+{% block content %}
+    {{ form_start(form) }}
+    <br>
+    <br>
+    <center>
+    <div class="col-sm-5 centered center-block "  >
+
+        <div class="homeContactContent centered" >
+
+
+            <div class="form-group ">
+                <i class="fa fa-music"></i>
+                {#
+                            <input type="text"  value="{{ produ.nom }}"  name="nom" class="form-control border-color-2 not-brdr-radius" id="exampleInputEmail1" placeholder="First name">
+                #}
+
+                {{ form_widget(form.nom,{'attr': {'class': 'form-control border-color-4 not-brdr-radius','placeholder':'First name'}}) }}
+
+
+            </div>
+
+
+
+            <div class="form-group">
+                <i class="fa fa-map-marker"></i>
+                {#
+                            <input type="text"  value="{{ produ.adresse }}"  name="adresse" class="form-control border-color-6 not-brdr-radius" id="exampleInputEmail1" placeholder="First name">
+                #}
+
+                {{ form_widget(form.adresse,{'attr': {'class': 'form-control border-color-2 not-brdr-radius','placeholder':'Adresse'}} )}}
+
+            </div>
+
+
+
+            <div class="form-group">
+                <i class="fa fa-comments" ></i>
+                {# <input type="text" value="{{ produ.tel }}"   name="tel" class="form-control border-color-4 not-brdr-radius" id="exampleInputEmail1">#}
+
+                {{ form_widget(form.description,{'attr': {'class': 'form-control border-color-5 not-brdr-radius','placeholder':'télephone'}} )}}
+
+            </div>
+
+
+
+            <div class="form-group">Date début
+                <div class='input-group date' id='datetimepicker6'>
+
+                    <input type='text'  name="datedeb"    value="{{ modele.datedeb }}"  class="form-control"   data-date-format="DD-MM-YYYY hh:mm:ss" />
+                    <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="form-group">date Fin
+                <div class='input-group ' id='datetimepicker7'>
+                    <input type='text'   value="{{ modele.datefin }}" name="datefin" class="form-control"  data-date-format="DD-MM-YYYY hh:mm:ss"  />
+                    <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+            <div class="form-group" >
+
+
+
+                <i class="fa fa-black-tie" ></i>
+
+                {#<textarea  name="description" class="form-control border-color-1 not-brdr-radius" id="exampleInputEmail1" value="{{ produ.description }}">{{ produ.description }} </textarea>#}
+                {{ form_widget(form.type,{'attr': {'class': 'form-control border-color-1 not-brdr-radius','placeholder':'categorie'}}) }}
+
+
+            </div>
+
+
+
+            {#Garçon <i class="fa fa-male"></i><input value="Garçon" name="genre" type="radio" class=" border-color-1 " {% if form.genre == "Garçon" %}checked="checked"{% endif %} >#}
+            {#Fille <i class="fa fa-female"></i> <input value="Fille" name="genre" type="radio" class=" border-color-1 not-brdr-radius" {% if form.genre == "Fille" %}checked="checked"{% endif %} >#}
+
+
+            <div class="form-group" id="prix">
+
+                <i class="fa fa-money" ></i>
+                {#<textarea  name="description" class="form-control border-color-1 not-brdr-radius" id="exampleInputEmail1" value="{{ produ.description }}">{{ produ.description }} </textarea>#}
+                {{ form_widget(form.prix,{'attr': {'class': 'form-control border-color-3 not-brdr-radius','placeholder':'prix'}}) }}
+            </div>
+
+            {#<input type="file" value="{{ produ.image }}"   name="tel" class="form-control border-color-4 not-brdr-radius" id="exampleInputEmail1">#}
+
+
+            <strong >image:<img src="{{ asset(aze) }}" height="100px" width="100px"></strong><br>
+            <div class="form-group">
+                <i class="fa fa-image"></i>
+                {#<textarea  name="description" class="form-control border-color-1 not-brdr-radius" id="exampleInputEmail1" value="{{ produ.description }}">{{ produ.description }} </textarea>#}
+                {{ form_widget(form.image,{'attr': {'class': 'form-control border-color-1 not-brdr-radius',novalidate: 'novalidate'}})}}
+
+            </div>
+
+            {{ form_widget(form.valider,{'attr': {'class': 'btn btn-success not-rounded right'}})}}
+            {#<input type="submit" class="btn btn-success not-rounded" value="Modifier">#}
+
+            <br><br><br><br>
+
+
+
+
+
+
+
+
+
+
+            {#<input type="submit" class="btn btn-success not-rounded" value="Modifier">#}
+
+
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <br>
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker6').datetimepicker();
+            $('#datetimepicker7').datetimepicker({
+                useCurrent: false //Important! See issue #1075
+            });
+            $("#datetimepicker6").on("dp.change", function (e) {
+                $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+            });
+            $("#datetimepicker7").on("dp.change", function (e) {
+                $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+            });
+        });
+
+
+
+    </script>
+    {{ form_end(form) }}
+{% endblock %}

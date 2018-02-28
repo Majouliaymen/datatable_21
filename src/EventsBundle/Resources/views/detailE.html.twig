@@ -1,0 +1,222 @@
+
+{% extends 'layout.html.twig' %}
+
+{% block head %}
+    <head>
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.12&appId=339743583185311&autoLogAppEvents=1';
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+        <meta name="description" content="KidsPro - Kids Education & Kindergarten School HTML5 Template" />
+        <meta name="keywords" content="kindergarten,children,kidsschool,school,baby,childschool,academy,course,education," />
+        <meta name="author" content="ThemeMascot" />
+        <script>
+
+
+            function onButtonClick() {
+                // Add this to a button's onclick handler
+                FB.AppEvents.logEvent("sentFriendRequest");
+            }
+
+        </script>
+        <script>
+
+            window.fbAsyncInit = function() {
+                FB.init({
+                    appId      : '{339743583185311}',
+                    cookie     : true,
+                    xfbml      : true,
+                    version    : '{v2.12}'
+                });
+
+                FB.AppEvents.logPageView();
+
+            };
+
+            (function(d, s, id){
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement(s); js.id = id;
+                js.src = "https://connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
+
+        <link href="{{asset('css/style32.css')}}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/default32.css')}}" id="option_color">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+        <!-- Page Title -->
+        <title>KidsPro - Kids Education & Kindergarten School HTML5 Template</title>
+
+        <!-- Favicon and Touch Icons -->
+        <link href="{{ asset('images/favicon.png')}}" rel="shortcut icon" type="image/png">
+        <link href="{{asset('images/apple-touch-icon.png')}}" rel="apple-touch-icon">
+        <link href="{{asset('images/apple-touch-icon-72x72.png')}}" rel="apple-touch-icon" sizes="72x72">
+        <link href="{{asset('images/apple-touch-icon-114x114.png')}}" rel="apple-touch-icon" sizes="114x114">
+        <link href="{{asset('images/apple-touch-icon-144x144.png')}}" rel="apple-touch-icon" sizes="144x144">
+
+        <!-- Stylesheet -->
+        <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{asset('css/jquery-ui.min.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{asset('css/animate.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{asset('css/css-plugin-collections.css')}}" rel="stylesheet"/>
+        <!-- CSS | menuzord megamenu skins -->
+        <link id="menuzord-menu-skins" href="{{asset('css/menuzord-skins/menuzord-rounded-boxed.css')}}" rel="stylesheet"/>
+        <!-- CSS | Main style file -->
+        <link href="{{asset('css/style-main.css')}}" rel="stylesheet" type="text/css">
+        <!-- CSS | Preloader Styles -->
+        <link href="{{asset('css/preloader.css')}}" rel="stylesheet" type="text/css">
+        <!-- CSS | Custom Margin Padding Collection -->
+        <link href="{{asset('css/custom-bootstrap-margin-padding.css')}}" rel="stylesheet" type="text/css">
+        <!-- CSS | Responsive media queries -->
+        <link href="{{asset('css/responsive.css')}}" rel="stylesheet" type="text/css">
+        <!-- CSS | Style css. This is the file where you can place your own custom css code. Just uncomment it and use it. -->
+
+
+        <!-- Revolution Slider 5.x CSS settings -->
+        <link  href="{{asset('js/revolution-slider/css/settings.css')}}" rel="stylesheet" type="text/css"/>
+        <link  href="{{asset('js/revolution-slider/css/layers.css')}}" rel="stylesheet" type="text/css"/>
+        <link  href="{{asset('js/revolution-slider/css/navigation.css')}}" rel="stylesheet" type="text/css"/>
+
+        <!-- CSS | Theme Color -->
+        <link href="{{asset('css/colors/theme-skin-color-set-1.css')}}" rel="stylesheet" type="text/css">
+
+        <!-- external javascripts -->
+        <script src="{{asset('js/jquery-2.2.4.min.js')}}"></script>
+        <script src="{{asset('js/jquery-ui.min.js')}}"></script>
+        <script src="{{asset('js/bootstrap.min.js')}}"></script>
+        <!-- JS | jquery plugin collection for this theme -->
+        <script src="{{asset('js/jquery-plugin-collection.js')}}"></script>
+
+        <!-- Revolution Slider 5.x SCRIPTS -->
+        <script src="{{asset('js/revolution-slider/js/jquery.themepunch.tools.min.js')}}"></script>
+        <script src="{{asset('js/revolution-slider/js/jquery.themepunch.revolution.min.js')}}"></script>
+
+        <script src="{{asset('js/custom.js')}}"></script>
+        <script>
+            {% if error %}
+            $(window).load(function(){
+                $('#loginModal').modal('show');
+            });
+            {% endif %}
+        </script>
+        <script  type="text/javascript">
+            $(document).ready(function () {
+
+                translatecall = function (id_ev)
+                {
+                    var list = $("#"+id_ev);
+                    $.ajax({
+                        url:"{{ path('translateajax') }}",
+                        method: 'POST',
+                        data: {'id': id_ev},
+                        dataType: 'json',
+                        success: function(json){
+                            $.each(json, function(index , value) {
+                                var text = document.createTextNode(value.new);
+                                list.append('<p>'+value.new+'</p>');
+
+                            });
+                        }
+                    });
+                }
+            });
+        </script>
+    </head>
+{% endblock %}
+{% block  content %}
+    {% block  section %}
+
+
+        <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="{{ asset('images/bg/bg1.jpg') }}" style="background-image: {{ asset('&quot;images/bg/bg3.jpg&quot') }}; background-position: 50% 98px;">
+            <div class="container pt-70 pb-20">
+                <!-- Section Content -->
+                <div class="section-content">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <ol class="breadcrumb text-left text-black mt-10">
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">Evenements</a></li>
+                                <li><a href="#">Les evenements</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+    {% endblock  %}
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-sm-8 col-xs-12 block pull-right">
+                <div class="thumbnail thumbnailContent alt">
+                    <div class="sticker bg-color-1" > ${{ detailE.prix }}</div>
+                    <img src="{{ asset(detailE.image) }}" alt="image" class="img-responsive">
+
+                    <div class="caption border-color-1 singleBlog" id="{{ detailE.id }}">
+
+                        <h3 class="color-1">{{ detailE.nom }}</h3>
+
+
+                        <p>{{ detailE.description }}</p><a onclick="translatecall({{ detailE.id }})" style="color: orangered"> Translation</a>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-12 pull-left">
+                <aside>
+                    <div class="panel panel-default eventSidebar col-lg-15">
+                        <div class="panel-heading bg-color-1 border-color-1">
+                            <h3 class="panel-title">Information sur l'évenement</h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="media-list">
+                                <li class="media">
+                                    <div class="media-left iconContent bg-color-2">
+                                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="media-body iconContent">
+                                        <h4 class="media-heading color-2">Start Date</h4>
+                                        <p>{{ detailE.datedeb}}</p>
+                                    </div>
+                                </li>
+
+                                <li class="media iconContet">
+                                    <div class="media-left iconContent bg-color-4">
+                                        <i class="fa fa-phone" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="media-body iconContent">
+                                        <h4 class="media-heading color-4">Organisateur</h4>
+                                        <p>{{ detailE.nomorg }}</p>
+                                    </div>
+                                </li>
+                                <li class="media">
+                                    <div class="media-left iconContent bg-color-5">
+                                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="media-body iconContent">
+                                        <h4 class="media-heading color-5">Event Venue</h4>
+                                        <p>{{ detailE.adresse }}
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

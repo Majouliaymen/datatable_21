@@ -1,0 +1,49 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Gerer reponse{% endblock %}
+{% block css %}{% endblock%}
+{% block content %}
+    <div class="main-container">
+
+        <div class="page-header">
+            <h1>liste des reponses</h1>
+            <hr>
+        </div>
+        <div class="content-wrap">
+            <div class="row">
+
+
+                <div class="col-md-12">
+                                <table class="table table-bordred table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>reponses</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for reponse in reponse %}
+                                        {% if reponse.iduser is not null %}
+                                    <tr>
+
+                                        <td>
+                                            <span><a href="{{ path('consulter_pub_rep',{'type' : 'reponse' , 'id' : reponse.id }) }}" target="_blank"><img src="{{ asset( reponse.iduser.image) }}" class="avatar img-circle" class="pull-left thumb m-r zoombox" style="width:50px" alt="avatar">   <b>{{ reponse.iduser.username }}</b></a> : {{ reponse.idpublication.titre }}</span>
+
+                                        <a type="button" class="btn btn-danger btn-rounded pull-right">Supprimer</a>
+
+                                    </tr>
+                                            {% endif %}
+                                        {% endfor %}
+
+
+
+                                    </tbody>
+                                </table>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+{% endblock %}

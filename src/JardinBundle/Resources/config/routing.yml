@@ -1,0 +1,30 @@
+jardin_homepage:
+    path:     /
+    defaults: { _controller: JardinBundle:Default:index }
+accjardin:
+    path:     /jardin
+    defaults: { _controller: JardinBundle:Jardin:Jardin }
+
+ajouterj:
+    path:     /ajouterj
+    defaults: { _controller: JardinBundle:Jardin:AjouterJ}
+mesjardin:
+    path:     /mesjardin
+    defaults: { _controller: JardinBundle:Jardin:MesJardin}
+updateJ:
+    path:     /updatej/{id}
+    defaults: { _controller: JardinBundle:Jardin:updateJ}
+deleteJ:
+    path:     /deleteJ/{id}
+    defaults: { _controller: JardinBundle:Jardin:deleteJ}
+sendmsg:
+    path:     /sendmsg/{id}
+    defaults: { _controller: JardinBundle:Jardin:Sendmsg}
+mesmsg:
+    path:     /mesmsg
+    defaults: { _controller: JardinBundle:Jardin:Mesmsg}
+
+
+
+
+

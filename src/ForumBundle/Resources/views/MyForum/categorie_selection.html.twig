@@ -1,0 +1,23 @@
+<h4>
+    <span>Catégories</span>
+    <a href="#"></a>
+</h4>
+<div >
+    <ul>
+        {% for cat in categorie %}
+            {% if cat.type=='categorie'%}
+                <li><input type="radio" value="{{ cat.id}}" name="categorie" /><label for="{{ cat.id}}">{{ cat.nom }}</label>
+                    <ul>
+                        {% for cat2 in categorie %}
+                            {% if cat2.type=='sous-categorie' and cat2.idCat.id == cat.id %}
+                                <li><input type="radio" value="{{ cat2.id}}-0" name="categorie" /><label for="{{ cat2.id}}-0">{{ cat2.nom }}</label>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+</div>

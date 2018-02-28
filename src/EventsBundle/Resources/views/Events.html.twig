@@ -1,0 +1,56 @@
+
+{% extends 'layout.html.twig' %}
+
+
+{% block  content %}
+    {% block  section %}
+    <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="{{ asset('images/bg/bg1.jpg') }}" style="background-image: {{ asset('&quot;images/bg/bg3.jpg&quot') }}; background-position: 50% 98px;">
+        <div class="container pt-70 pb-20">
+            <!-- Section Content -->
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="title text-white">About</h2>
+                        <ol class="breadcrumb text-left text-black mt-10">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Evenements</a></li>
+
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+{% endblock  %}
+    <section class="mainContent full-width clearfix coursesSection">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-12 block">
+                    <div class="thumbnail thumbnailContent">
+                        <a href="course-single-left-sidebar.html"><img src="{{ asset('images/bg/bg5.jpg') }}" alt="image" class="img-responsive"></a>
+                        <div class="sticker bg-color-1">$50</div>
+                        <div class="caption border-color-1">
+                            <h3><a href="course-single-left-sidebar.html" class="color-1">Morbi scelerisque nibh.</a></h3>
+                            <ul class="list-unstyled">
+                                <li><i class="fa fa-calendar-o" aria-hidden="true"></i>Age 2 to 4 Years</li>
+                                <li><i class="fa fa-clock-o" aria-hidden="true"></i>9.00AM-11.00AM</li>
+                            </ul>
+                            <div>zef,zlefzefze</div>
+                            <ul class="list-inline btn-yellow">
+                                <li><a href="cart-page.html" class="btn btn-primary "><i class="fa fa-shopping-basket " aria-hidden="true"></i>Add to Cart</a></li>
+                                <li><a href="course-single-left-sidebar.html" class="btn btn-link"><i class="fa fa-angle-double-right" aria-hidden="true"></i> More</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </section>
+    {% endblock %}
+

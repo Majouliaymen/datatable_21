@@ -1,0 +1,129 @@
+{% extends 'layout.html.twig' %}
+
+
+{% block content %}
+    <link href="{{asset('css/style32.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/default32.css')}}" id="option_color">
+
+
+    <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="{{ asset('images/bg/bg8.jpg') }}">
+        <div class="container pt-70 pb-20">
+            <!-- Section Content -->
+            <div class="section-content">
+
+
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="sectionTitle text-center">
+                            <h2>
+                                <span class="shape shape-left bg-color-4"></span>
+                                <span  class="color-3" >Les Offres</span>
+                                <span class="shape shape-right bg-color-4"></span>
+                            </h2>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    {% if babys == NULL %}
+        <center><h3> Il n'y a pas d'offre </h3></center>
+    {% else %}
+
+        <div class="col-sm-3">
+            <a href="#search" data-toggle="modal">   <div class="input-group">
+                    <input type="text" placeholder="Click to Search" id="recherche"  class="form-control search-input">
+                    <span class="input-group-btn">
+  <button type="submit" class="btn search-button"><i class="fa fa-search"></i></button>
+  </span>
+                </div>
+            </a>
+        </div>
+
+        <div class="container">
+
+        <div class="row" style="padding-top: 30px">
+            <div class="r">
+
+        {% for baby in babys %}
+
+
+            <div class="col-xs-12 col-sm-3 col-md-3">
+                <article class="post clearfix mb-sm-30">
+                    <div class="product" style="padding-bottom: 0px">
+                    <div class="product-thumb">
+                        {#listes des produits yolo#}
+
+                        <img style="width: 250px;height: 250px;" alt="image"   src="{{ asset(baby.image) }}" class="img-responsive ">
+
+                        <div class="overlay">
+                            <div class="btn-add-to-cart-wrapper">
+                                <a class="btn btn-theme-color-red btn-sm btn-flat pl-3 pr-20 btn-add-to-cart text-uppercase font-weight-700" >Contacter</a>
+                            </div>
+
+                            <div class="btn-product-view-details">
+                                <a class="btn btn-default btn-theme-color-sky btn-sm btn-flat pl-20 pr-20 btn-add-to-cart text-uppercase font-weight-700">Voir Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="entry-content p-20 pr-10  bg-white">
+                        <div class="entry-meta media mt-0 no-bg no-border">
+                            <div class="entry-date media-left text-center flip bg-theme-color-green pt-5 pr-15 pb-5 pl-15">
+                                <ul>
+                                    <li class="font-16 text-white font-weight-600 border-bottom">{{ baby.disponibilite }}</li>
+                                    <li class="font-12 text-white text-uppercase">{{ baby.datefin}}</li>
+                                </ul>
+                            </div>
+                            <div class="media-body pl-15">
+                                <div class="event-content pull-left flip">
+                                    <h4 class="entry-title m-0 mt-5"><a class="text-theme-color-blue" href="#">{{ baby.nom }}</a></h4>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-10"><strong>Prenom: </strong>{{ baby.prenom }}
+                        </p>
+
+                        <p class="mt-10"><strong>Prix : </strong>{{ baby.prix }}
+                        </p>
+                        <p class="mt-10"><strong>Adresse : </strong>{{ baby.adrese }}
+                        <p class="mt-10"><strong>Email : </strong>{{ baby.email }}
+                        </p>
+
+
+                    </div>
+
+
+                </article>
+                <br>
+            </div>
+
+        {% endfor %}
+        </div>
+        </div>
+        </div>
+            {% endif %}
+    <script>
+
+
+        $(document).ready(function () {
+            $('#recherche').on('keyup', function () {
+                $search = $(this).val();
+                $.ajax({
+                    url: "{{ path('_ajax') }}",
+                    data: {'search': $search }
+                }).done(function (response) {
+                    $('.r').html(response)
+                }).catch(function (err) {
+
+                });
+            });
+        });
+
+
+    </script>
+{% endblock %}

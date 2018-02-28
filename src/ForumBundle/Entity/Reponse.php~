@@ -1,0 +1,59 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: ikbel
+ * Date: 11/02/2018
+ * Time: 19:58
+ */
+
+namespace ForumBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+/**
+ * reponse
+ *
+ * @ORM\Table(name="Reponse")
+ * @ORM\Entity(repositoryClass="ForumBundle\Repository\reponseRepository")
+ */
+
+class Reponse
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="contenu", type="text")
+     */
+    private $contenu;
+
+    /**
+     * @ORM\Column(name="created", type="datetime")
+     */
+    private $created;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="ForumBundle\Entity\Publication",inversedBy="id_reponse")
+     * @ORM\JoinColumn(name="id_publication", referencedColumnName="id")
+     */
+    private $id_publication;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User" , inversedBy="id_reponse")
+     * @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+     */
+    private $id_user;
+
+    /**
+     * One Product has Many Features.
+     * @ORM\OneToMany(targetEntity="ForumBundle\Entity\Avis", mappedBy="reponse")
+     * @ORM\JoinColumn(name="avis", referencedColumnName="id")
+     */
+    private $avis;
+}

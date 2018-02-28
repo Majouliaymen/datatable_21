@@ -1,0 +1,148 @@
+{% extends 'layout.html.twig' %}
+
+
+{% block style %}
+    <!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<!-- Mirrored from thememascot.net/demo/personal/s/kidspro/v2.0/demo/shop-category-sidebar.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Feb 2018 10:23:52 GMT -->
+<head>
+
+    <!-- Meta Tags -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta name="description" content="KidsPro - Kids Education & Kindergarten School HTML5 Template" />
+    <meta name="keywords" content="kindergarten,children,kidsschool,school,baby,childschool,academy,course,education," />
+    <meta name="author" content="ThemeMascot" />
+
+    <!-- Page Title -->
+    <title>KidsPro - Kids Education & Kindergarten School HTML5 Template</title>
+
+    <!-- Favicon and Touch Icons -->
+    <link href="{{asset('images/favicon.png')}}" rel="shortcut icon" type="image/png">
+    <link href="{{asset('images/apple-touch-icon.png')}}" rel="apple-touch-icon">
+    <link href="{{asset('images/apple-touch-icon-72x72.png')}}" rel="apple-touch-icon" sizes="72x72">
+    <link href="{{asset('images/apple-touch-icon-114x114.png')}}" rel="apple-touch-icon" sizes="114x114">
+    <link href="{{asset('images/apple-touch-icon-144x144.png')}}" rel="apple-touch-icon" sizes="144x144">
+
+    <!-- Stylesheet -->
+    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('css/jquery-ui.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('css/animate.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('css/css-plugin-collections.css')}}" rel="stylesheet"/>
+    <!-- CSS | menuzord megamenu skins -->
+    <link id="menuzord-menu-skins" href="{{asset('css/menuzord-skins/menuzord-rounded-boxed.css')}}" rel="stylesheet"/>
+    <!-- CSS | Main style file -->
+    <link href="{{asset('css/style-main.css')}}" rel="stylesheet" type="text/css">
+    <!-- CSS | Preloader Styles -->
+    <link href="{{asset('css/preloader.css')}}" rel="stylesheet" type="text/css">
+    <!-- CSS | Custom Margin Padding Collection -->
+    <link href="{{asset('css/custom-bootstrap-margin-padding.css')}}" rel="stylesheet" type="text/css">
+    <!-- CSS | Responsive media queries -->
+    <link href="{{asset('css/responsive.css')}}" rel="stylesheet" type="text/css">
+
+    <link href="{{asset('css/colors/theme-skin-color-set-1.css')}}" rel="stylesheet" type="text/css">
+
+    <!-- external javascripts -->
+    <script src="{{asset('js/jquery-2.2.4.min.js')}}"></script>
+    <script src="{{asset('js/jquery-ui.min.js')}}"></script>
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <!-- JS | jquery plugin collection for this theme -->
+    <script src="{{asset('js/jquery-plugin-collection.js')}}"></script>
+
+</head>
+<body class="">
+<div id="wrapper" class="clearfix">
+    <!-- preloader -->
+    <div id="preloader">
+        <div id="spinner">
+            <div class="preloader-dot-loading">
+                <div class="cssload-loading"><i></i><i></i><i></i><i></i></div>
+            </div>
+        </div>
+        <div id="disable-preloader" class="btn btn-default btn-sm">Disable Preloader</div>
+    </div>
+
+    {% endblock %}
+
+    {% block content %}
+        <!-- Start main-content -->
+        <div class="main-content">
+
+            <!-- Section: inner-header -->
+            <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="{{ asset('images/bg/bg3.jpg') }}">
+                <div class="container pt-70 pb-20">
+                    <!-- Section Content -->
+                    <div class="section-content">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3 class="title text-white">Baby-sitter</h3>
+                                <ul class="list-inline text-white">
+                                    <li>Home /</li>
+                                    <li><span class="text-gray">Baby-sitter</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="">
+                <div class="container mt-30 mb-30 p-30">
+                    <form action="" method="post">
+                        <div class="form-group">
+                            <label>nom</label>
+                            <input class="form-control" name="nom" type="text" value="{{ model.nom}}">
+
+                        </div>
+                        <div class="form-group">
+                            <label>prenom</label>
+                            <input class="form-control" name="prenom" type="text" value="{{ model.prenom }}">
+
+                        </div>
+                        <div class="form-group">
+                            <label>Age</label>
+                            <input class="form-control" name="age" type="text" value="{{ model.adrese }}">
+
+                        </div>
+
+                        <div class="form-group">
+                            <label>username</label>
+                            <input class="form-control" name="username" type="text" value="{{ model.disponibilite }}">
+                        </div>
+                        <div class="form-group">
+                            <label>file</label>
+                            <input  name="file" type="file" id="file" >
+                        </div>
+
+
+                        <div class="col-sm-6 col-md-4 col-lg-4 mb-30">
+                            <img alt="" src="{{ asset(model.image) }}" class="img-responsive img-fullwidth">
+                        </div>
+
+
+                        <button class="btn btn-primary" type="submit">modifier</button>
+                    </form>
+                </div>
+            </section>
+            <!-- end main-content -->
+        </div>
+    {% endblock %}
+
+
+
+    {% block code %}
+
+
+</div>
+<!-- end wrapper -->
+
+<!-- Footer Scripts -->
+<!-- JS | Custom script for all pages -->
+<script src="{{asset('js/custom.js')}}"></script>
+
+</body>
+
+<!-- Mirrored from thememascot.net/demo/personal/s/kidspro/v2.0/demo/shop-category-sidebar.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 02 Feb 2018 10:23:53 GMT -->
+</html>
+{% endblock %}

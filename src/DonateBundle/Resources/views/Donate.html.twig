@@ -1,0 +1,37 @@
+
+{% extends 'layout.html.twig' %}
+
+
+{% block  content %}
+    {% block  section %}
+        <section class="inner-header divider parallax layer-overlay overlay-dark-3" data-bg-img="{{ asset('images/bg/hand1.jpg') }}" style="background-image: {{ asset('&quot;images/bg/bg3.jpg&quot') }}; background-position: 50% 30px;">
+            <div class="container pt-70 pb-20">
+                <!-- Section Content -->
+                <div class="section-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 class="title text-white">About</h2>
+                            <ol class="breadcrumb text-left text-black mt-10">
+                                <li><a href="#">home</a></li>
+                                <li><a href="{{ path('donate') }}">Donate</a></li>
+
+
+
+
+
+
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+
+
+    {% endblock  %}
+
+
+    Donate
+    {% endblock  %}

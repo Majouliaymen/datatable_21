@@ -1,0 +1,50 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+    <h1>Publication liste</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Nbr_vue</th>
+                <th>Created</th>
+                <th>Nbrreponse</th>
+                <th>Location</th>
+                <th>Contenu</th>
+                <th>Piecejointe</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for question in questions %}
+            <tr>
+                <td><a href="{{ path('publication_show', { 'id': publication.id }) }}">{{ publication.id }}</a></td>
+                <td>{{ publication.titre }}</td>
+                <td>{{ publication.nbrvue }}</td>
+                <td>{% if publication.created %}{{ publication.created|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ publicationn.nbrReponse }}</td>
+                <td>{{ publication.location }}</td>
+                <td>{{ publication.contenu }}</td>
+                <td>{{ publication.pieceJointe }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('publication_show', { 'id': publication.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('publication_edit', { 'id': publication.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('publication_new') }}">Create a new post</a>
+        </li>
+    </ul>
+{% endblock %}

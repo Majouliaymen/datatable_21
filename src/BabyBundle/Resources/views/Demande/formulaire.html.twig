@@ -1,0 +1,155 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <link href="{{ asset('https://fonts.googleapis.com/icon?family=Material+Icons') }}" rel="stylesheet">
+    <link href="{{asset('css/style32.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/default32.css')}}" id="option_color">
+    <link href="{{asset('css/rotating-card.css')}}" rel='stylesheet' />
+
+    <link href="{{asset('http://netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css')}}" rel="stylesheet">
+
+    <script src="{{asset('https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js')}}"></script>
+    <br>
+    {{ form_start(form) }}
+
+    <div class="container">
+
+        <div class="col-md-4 col-sm-6">
+            <div class="card-container">
+                <div class="card">
+                    <div class="front">
+                        <div class="cover">
+                            <img src="{{ asset('images/rotating_card_thumb3.png') }}"/>
+                        </div>
+                        <div class="user">
+                            <img class="img-circle" src="{{ asset(image) }}"/>
+                        </div>
+                        <div class="content">
+                            <div class="main">
+                                <h3 class="name">{{ nom }} {{ prenom }}</h3>
+                                {#<p class="profession">{{ role }}</p>#}
+
+                                <p class="text-center">"{{ description }}"</p>
+                            </div>
+                            <div class="footer">
+                                <div class="rating">
+                                    <i class="fa fa-mail-forward"></i> Plus de Details
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- end front panel -->
+                    <div class="back">
+                        <div class="header">
+                            <h5 class="motto">"coordonnées"</h5>
+                        </div>
+                        <div class="content">
+                            <div class="main">
+                                <h4 class="text-center">Adresse</h4>
+                                <p class="text-center">{{ adresse }}</p>
+
+
+
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <div class="social-links text-center">
+                                <a href="http://creative-tim.com" class="facebook"><i class="fa fa-facebook fa-fw"></i></a>
+                                <a href="http://creative-tim.com" class="google"><i class="fa fa-google-plus fa-fw"></i></a>
+                                <a href="http://creative-tim.com" class="twitter"><i class="fa fa-twitter fa-fw"></i></a>
+                            </div>
+                        </div>
+                    </div> <!-- end back panel -->
+                </div> <!-- end card -->
+            </div> <!-- end card-container -->
+        </div> <!-- end col-sm-3 -->
+        <div class="col-sm-8">
+
+           <input id="right" value="right" hidden>
+            <div class="col-sm-3" id="show" > <img alt src="{{ asset('images/flat-color-icons-svg/services.svg') }}" title="services.svg" />
+                    <h3>Modifier</h3>
+            </div>
+            <div id="modify" class="panel panel-default checkoutInfo">
+                <div class="panel-heading bg-color-3 border-color-3">
+                    <h3 class="panel-title">Modifier Votre Profil</h3>
+
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="col-sm-6 col-xs-12">
+                            <label for="">Nom</label>
+                            {{ form_widget(form.nom) }}
+                            {#<input type="text" class="form-control border-color-1" id="">#}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-6 col-xs-12">
+                            <label for="">Prenom</label>
+                            {{ form_widget(form.prenom) }}
+                            {#<input type="text" class="form-control border-color-1" id="">#}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-6 col-xs-12">
+                            <label for="">Username</label>
+
+                            {{ form_widget(form.username) }}
+                            {#<input type="text" class="form-control border-color-1" id="">#}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-6 col-xs-12">
+                            <label for="">Adresse</label>
+                            {{ form_widget(form.adrese) }}
+                            {#<input type="text" class="form-control border-color-1" id="">#}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-6 col-xs-12">
+                            <label for="">Photo</label>
+                            {{ form_widget(form.image) }}
+                            {#<input type="text" class="form-control border-color-1" id="">#}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <label for="">Description</label>
+                            {{ form_widget(form.description) }}
+                            {#<input type="text" class="form-control border-color-1" id="">#}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-6 col-xs-12">
+                            <label for=""></label>
+                            {{ form_widget(form.save) }}
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ form_end(form) }}
+
+    <script>
+        $( "#modify" ).hide();
+        $( "#show" ).click(function() {
+            $( "#show" ).hide();
+            // Set the effect type
+            var effect = 'slide';
+
+            // Set the options for the effect type chosen
+            var options = { direction: $('#right').val() };
+
+            // Set the duration (default: 400 milliseconds)
+            var duration = 400;
+
+            $('#modify').toggle(effect, options);
+
+
+
+    });
+    </script>
+
+{% endblock %}

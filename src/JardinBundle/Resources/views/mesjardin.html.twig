@@ -1,0 +1,148 @@
+{% extends '::layout.html.twig' %}
+
+{% block content %}
+
+    <div class="main-content">
+
+        <!-- Section: inner-header -->
+        <section class="inner-header divider parallax layer-overlay overlay-dark-5"
+                 data-bg-img="{{ asset('images/bg/bg3.jpg') }}">
+            <div class="container pt-70 pb-20">
+                <!-- Section Content -->
+                <div class="section-content">
+                    <div class="row">
+                        <div class="col-md-12 ">
+                            <center><h3 class="title text-white">Mes Jardin</h3></center>
+                            <ul class="list-inline text-white">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="">
+            <div class="container mt-30 mb-30 p-30">
+                <div class="section-content">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-9">
+                            <div class="row multi-row-clearfix">
+                                <div class="products">
+                                    {% for jardin in jardins %}
+
+                                        <div class="col-xs-12 col-sm-6 col-md-6">
+                                            <h4 class="widget-title title-dots mt-30"><span>{{ jardin.nom }}</span></h4>
+                                            <article class="post mb-30">
+                                                <div class="entry-header">
+                                                    <div class="post-thumb">
+                                                        <img class="img-fullwidth img-responsive" src="{{ asset(jardin.logo) }}" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                                <div class="entry-content">
+                                                    <h5 class="entry-title text-uppercase mt-0"><a href="#">{{ jardin.adresse }}</a></h5>
+
+                                                    <p>{{ jardin.description }}</p>
+                                                    <ul class="list-inline like-comment pull-left flip font-12">
+                                                        <a href="{{ path('updateJ',{'id':jardin.id}) }}"
+                                                           class="btn btn-flat btn-colored btn-theme-color-green mt-15">modifier Jardin {{ jardin.id }}</a>
+                                                        <a href="{{ path('deleteJ',{'id':jardin.id}) }}"
+                                                           class="btn btn-flat btn-colored btn-theme-color-red mt-15">Supprimer</a>
+
+
+
+
+
+                                                    </ul>
+                                                    <a href="#" class="pull-right flip text-gray font-13"><i class="fa fa-angle-double-right text-theme-color-2"></i> Read more</a>
+                                                    <div class="clearfix"></div>
+                                                </div>
+                                            </article>
+                                        </div>
+
+                                    {% endfor %}
+
+                                    <div class="col-md-12">
+                                        <nav>
+                                            <ul class="pagination theme-colored mt-0">
+                                                <li><a href="#" aria-label="Previous"> <span aria-hidden="true">&laquo;</span> </a></li>
+                                                <li class="active"><a href="#">1</a></li>
+                                                <li><a href="#">2</a></li>
+                                                <li><a href="#">3</a></li>
+                                                <li><a href="#">4</a></li>
+                                                <li><a href="#">5</a></li>
+                                                <li><a href="#">...</a></li>
+                                                <li><a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span> </a></li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-3">
+                            <div class="sidebar sidebar-right mt-sm-30">
+                                <div class="widget">
+                                    <h5 class="widget-title line-bottom">Search box</h5>
+                                    <div class="search-form">
+                                        <form>
+                                            <div class="input-group">
+                                                <input type="text" placeholder="Click to Search" class="form-control search-input">
+                                                <span class="input-group-btn">
+                            <button type="submit" class="btn search-button"><i class="fa fa-search"></i></button>
+                          </span>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="widget">
+                                    <h5 class="widget-title line-bottom">Categories</h5>
+                                    <div class="categories">
+                                        <ul class="list list-border angle-double-right">
+                                            <li><a href="#">Creative<span>(19)</span></a></li>
+                                            <li><a href="#">Portfolio<span>(21)</span></a></li>
+                                            <li><a href="#">Fitness<span>(15)</span></a></li>
+                                            <li><a href="#">Gym<span>(35)</span></a></li>
+                                            <li><a href="#">Personal<span>(16)</span></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="widget">
+                                    <h5 class="widget-title line-bottom">Top Sellers</h5>
+                                    <div class="top-sellers">
+                                        <article class="post media-post clearfix pb-0 mb-10">
+                                            <a class="post-thumb" href="#"><img src="{{ asset('images/products/sm1.jpg') }}" alt=""></a>
+                                            <div class="post-right">
+                                                <h5 class="post-title font-weight-600 mt-0 mb-0"><a href="#">Product Name</a></h5>
+                                                <div class="product-detail">
+                                                    <div class="price mb-10">
+                                                        <ins><span class="amount">$480.00</span></ins>
+                                                    </div>
+                                                    <div title="Rated 3.50 out of 5" class="star-rating ml-0"><span data-width="60%">3.50</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+
+                                    </div>
+                                </div>
+                                <div class="widget">
+                                    <h5 class="widget-title line-bottom">Photos from Flickr</h5>
+                                    <div id="flickr-feed" class="clearfix">
+                                        <!-- Flickr Link -->
+                                        <script type="text/javascript"
+                                                src="http://www.flickr.com/badge_code_v2.gne?count=9&amp;display=latest&amp;size=s&amp;layout=x&amp;source=user&amp;user=52617155@N08">
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end main-content -->
+
+    </div>
+
+{% endblock %}

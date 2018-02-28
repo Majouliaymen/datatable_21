@@ -1,0 +1,53 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Publication{% endblock %}
+{% block css %}<link rel="stylesheet" type="text/css" href="{{ asset('Forumassets/css/mescss/treecategories.css') }}">{% endblock %}
+{% block content %}
+    <div class="main-container">
+
+        <div class="page-header">
+            <h1>Forum</h1>
+            <hr>
+
+
+            {% include 'ForumBundle:Base:Chercheforum.html.twig' %}
+
+            <div class="content-wrap">  <!--START: Content Wrap-->
+                    <div class="row">
+                        <div class="col-md-4 panel-expand">
+                            {% include 'ForumBundle:Base:categories.html.twig' %}
+                        </div>
+                        <div class="col-md-8">
+                            <h3 class="bg-success" style="text-align: center;">{{ curentcategory.nom }}</h3><br>
+                            {% if typeaff != 'populaires' %}
+                            <div class="fec-1">
+                                <h4 class="text-success">
+                                    <a href="{{ path('consulter_categorieforum',{'typecat':curentcategory.nom ,'typeaff':'recents', 'id_cat' : curentcategory.id}) }}" class="text-success">Articles mis en avant</a>
+                                </h4>
+                                <ol>
+                                    {% for publicationrecent in publicationrecent %}
+                                    <li><a href="{{ path('consulter_publicationforum',{'id_publication' :publicationrecent.id}) }}">{{ publicationrecent.titre }}</a></li>
+                                        {% endfor %}
+                                </ol>
+                            </div>
+                                {% endif %}
+                            <br>
+                            {% if typeaff != 'recents' %}
+                            <div class="fec-1">
+                                <h4 class="text-success">
+                                    <a href="{{ path('consulter_categorieforum',{'typecat': curentcategory.nom ,'typeaff':'populaires', 'id_cat' : curentcategory.id}) }}" class="text-success">Les plus populaire</a>
+                                </h4>
+                                <ol>
+                                    {% for publicationrecent in publicationpopulaire %}
+                                        <li><a href="{{ path('consulter_publicationforum',{'id_publication' :publicationrecent.id}) }}">{{ publicationrecent.titre }}</a></li>
+                                    {% endfor %}
+                                </ol>
+                            </div>
+                                {% endif %}
+                            <br>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}{% endblock %}

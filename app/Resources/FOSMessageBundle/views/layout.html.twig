@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset={{ _charset }}" />
+    <title>{% trans from 'FOSMessageBundle' %}messenger{% endtrans %}</title>
+</head>
+<style>
+    body {
+        background-color: white;
+    }
+
+    h1{
+        text-align: center;
+        text-transform: uppercase;
+        color: white;
+
+        background: indianred;
+        padding: 20px;
+
+    }
+    h2 {
+        text-align: center;
+        color: indianred;
+    }
+
+    a:link, a:visited {
+        background-color: darksalmon;
+        color: black;
+        padding: 14px 25px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+
+    a:hover, a:active {
+        background-color: lightsalmon;
+    }
+
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    input[type=submit] {
+        width: 100%;
+        background-color: darkgrey;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+        background-color: darkgrey;
+    }
+    input[type=text], textarea {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+</style>
+<body>
+
+<h1>{% trans from 'FOSMessageBundle' %}messenger{% endtrans %}</h1>
+
+<ul>
+    <a href="{{ url('fos_message_inbox') }}">{% trans from 'FOSMessageBundle' %}inbox{% endtrans %}</a>
+    <a href="{{ url('fos_message_sent') }}">{% trans from 'FOSMessageBundle' %}sent{% endtrans %}</a>
+    <a href="{{ url('fos_message_deleted') }}">{% trans from 'FOSMessageBundle' %}deleted{% endtrans %}</a>
+</ul>
+
+{% block fos_message_content %}{% endblock %}
+
+</body>
+</html>

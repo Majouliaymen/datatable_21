@@ -1,0 +1,46 @@
+<h4>
+    <span class="panel-heading">Catégories</span>
+    <a href="#"></a>
+</h4>
+<div class="css-treeview panel-body">
+    <ul>
+        {% for cat in categorie %}
+            {% if cat.type=='categorie'%}
+        <li><input type="checkbox" id="{{ cat.id }}" /><label for="{{ cat.id }}"><a href="{{ path('consulter_categorieforum',{'typecat':'categorie' ,'typeaff':'populairesandrecents', 'id_cat':cat.id}) }}">{{ cat.nom }}</a></label>
+            <ul>
+                {% for cat2 in categorie %}
+                    {% if cat2.idCat is not null %}
+                {% if cat2.type=='sous-categorie' and cat2.idCat.id == cat.id %}
+
+                    <li><input type="checkbox" id="{{ cat2.id }}" /><label for="{{ cat2.id }}"><a href="{{ path('consulter_categorieforum',{'typecat':'sous_categorie' ,'typeaff':'populairesandrecents', 'id_cat' : cat2.id}) }}">{{ cat2.nom }}</a></label>
+                    <ul>
+
+                        <ul>
+                                    {% for pub in publication %}
+                                    {% if pub.idCategorie.id == cat2.id and pub.location=='approuver' %}
+                                        <li class="fa fa-file-o"><a href="{{ path('consulter_publicationforum',{'id_publication' : pub.id}) }}">&nbsp;&nbsp;&nbsp; {{ pub.titre }}</a></li>
+                                        <br>
+                                    {% endif %}
+                                    {% endfor %}
+
+                        </ul>
+
+
+                    </ul>
+                </li>
+                    {% endif %}
+                {% endif %}
+                {% endfor %}
+                {% for pub in publication %}
+                {% if pub.idCategorie.id == cat.id and pub.location=='approuver' %}
+                <li class="fa fa-file-o"><a href="{{ path('consulter_publicationforum',{'id_publication' : pub.id}) }}"> &nbsp;&nbsp;&nbsp; {{ pub.titre }} </a></li>
+                    <br>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+
+</div>

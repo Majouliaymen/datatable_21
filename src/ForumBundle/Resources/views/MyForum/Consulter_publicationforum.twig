@@ -1,0 +1,141 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Publication{% endblock %}
+{% block css %} <link rel="stylesheet" type="text/css" >
+    <link rel="stylesheet" type="text/css" >
+    <link rel="stylesheet" type="text/css" >
+
+    <link rel="stylesheet" type="text/css" >
+
+
+
+{% endblock %}
+{% block body %}
+    <div class="main-container">
+
+        <div class="page-header">
+            <h1>Forum</h1>
+            <hr>
+
+
+            {% include '@Forum/Base/CherchForum.html.twig' %}
+            <br>
+        </div>
+
+        <div class="content-wrap">  <!--START: Content Wrap-->
+            <div class="row">
+                <div class="col-md-4 panel-expand">
+                    {% include '@Forum/Base/categories.html.twig' %}
+                </div>
+                <div class="col-md-7 panel">
+                    <table class="table-bordered"><br>
+                        <thead class="row">
+                        <div class="col-md-2">
+                            <img class="img-responsive avatar img-circle" src="{{ asset(publicationaffiche.iduser.avatar) }}" style="width:50px"/>
+                        </div>
+                        <div class="col-md-8 ">
+                            <span class="text-muted "> Author: <b>{{ publicationaffiche.iduser.prenom }} {{ publicationaffiche.iduser.nom }}</b> </span> &nbsp;&nbsp; <span>Specialté : {{ publicationaffiche.iduser.idEtudiant.specialite }} </span>  &nbsp;&nbsp;| &nbsp;&nbsp; <span> Views: {{ publicationaffiche.nbrVue }} </span>  &nbsp;&nbsp;| &nbsp;&nbsp; <span> Created : {{ publiaffiche.created|date }} </span>
+                        </div>
+                        </thead>
+                        <hr><br><hr>
+                        <tbody>
+                        <tr>
+                            <div class="form-control" readonly="50"><b>{{ questionaffiche.titre}}</b></div>
+                        </tr>
+
+                        <hr>
+                        <br><br>
+                        <tr>
+                            <textarea class="form-control" rows="10" readonly> {{ questionaffiche.contenu }}</textarea>
+                        </tr><br><br><hr>
+                        <tr><h4>Les reponses ..</h4></tr>
+
+                        {% for reponse in reponses  %}
+                            {% if reponse.idQuestion == questionaffiche %}
+                                <!-- First Comment -->
+                                <article class="row">
+                                    <div class="col-md-2 col-sm-2 col-xs-3  hidden-xs">
+                                        <figure class="thumbnail">
+                                            <img class="img-responsive" src="{{ asset(reponse.idUser.avatar) }}" />
+                                            <figcaption class="text-center">{% if reponse.idUser.idEnseignant is null %}ETUDIANT{% else %}ENSEIGNANT{% endif %}</figcaption>
+                                        </figure>
+                                    </div>
+                                    <div class="col-md-10 col-sm-10">
+                                        <div class="panel panel-default arrow left">
+                                            <div class="panel-body">
+                                                <header class="text-left">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="comment-user"><i class="fa fa-user"></i> {{ reponse.idUser.prenom }} {{ reponse.idUser.nom }} | <i class="fa fa-mortar-board"></i> {% if reponse.idUser.idEnseignant is null %}{{ reponse.idUser.idEtudiant.specialite }}{% else %}{{ reponse.idUser.idEnseignant.specialite }}{% endif %} | <time class="comment-date" ><i class="fa fa-clock-o"></i>{{ reponse.created|date  }}</time> </div>
+                                                        </div>
+                                                        <div class="part col-md-12 row">
+                                                            {%  if reponse.idUser.id != app.user.id %}
+                                                                <div class="stars rate" data-percent="30"><a href="{{ path('donneravis',{'id_reponse' : reponse.id , 'avis' : 1 }) }}" title="awful">★</a><a href="{{ path('donneravis',{'id_reponse' : reponse.id , 'avis' : 2 }) }}" title="ok">★</a><a href="{{ path('donneravis',{'id_reponse' : reponse.id , 'avis' : 3 }) }}" title="good">★</a><a href="{{ path('donneravis',{'id_reponse' : reponse.id , 'avis' : 4 }) }}" title="great">★</a><a href="{{ path('donneravis',{'id_reponse' : reponse.id , 'avis' : 5 }) }}" title="awesome">★</a> </div>&nbsp;&nbsp; <span>{{ reponse.avis.count }} Rate</span>
+                                                            {% endif %}
+                                                            {% if reponse.iduser == app.user %}
+                                                                <div class="btn-group inline pull-right"><div class="col-xs-4"> <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#{{ reponse.id }}">Modifier</button></div><div class="col-xs-4"><form action="{{ path('supprimer_reponse',{'id_reponse' : reponse.id}) }}" method="POST"> <button class="btn btn-danger btn-xs">Supprimer</button></form></div></div>
+                                                                <!--pop up modif-->
+                                                                <form action="{{ path('modifier_reponse',{'id_reponse' : reponse.id}) }}" method="POST">
+                                                                    <div class="modal fade" id="{{ reponse.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                                                        <div class="modal-dialog" role="document">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                                                    <h4 class="modal-title" id="myModalLabel">modifier votre reponse</h4>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    <textarea name="contenuu" rows="20" cols="90" class="form-control">{{ reponse.contenu }}</textarea>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                                    <button type="submit" class="btn btn-primary" >modifier</button>
+
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                                </header>
+                                                <textarea class=" form-control" readonly rows="5">
+
+                                                         {{  reponse.contenu }}
+                                                </textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>
+
+                            {% endif %}
+                        {% endfor %}
+                        </tbody>
+                        <tfoot>
+                        <div class="form-area">
+                            <div class="row">
+                                <br style="clear:both">
+                                <h3 style="margin-bottom: 25px; text-align: center;">ajouter commentaire</h3>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="name" value="{{ app.user.username }}" readonly>
+                                </div>
+                                {{ form_start(reponseform) }}
+                                {{ form_errors(reponseform) }}
+                                <div class="form-group">
+                                    {{ form_widget(reponseform.contenu,{'attr' : {'class' : 'form-control' , 'rows' : 5 }}) }}
+                                </div>
+                                <div class="form-actions fluid">
+                                    <div class="col-md-12 media-middle">
+                                        <button type="submit" class="btn btn-success">REPONDRE</button>
+                                    </div>
+                                </div>
+                                {{ form_end(reponseform) }}
+                            </div>
+                        </div>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- fef-1 -->
+            </div>
+        </div>
+    </div>
+{% endblock %}

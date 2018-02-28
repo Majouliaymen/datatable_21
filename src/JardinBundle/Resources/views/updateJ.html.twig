@@ -1,0 +1,45 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+
+<br>
+<br>
+<br>
+<br>
+
+
+    {% for jardin in jardins %}
+
+
+
+    <div class="card mb-3" style="width: 60% ;left: 20%" >
+        <div class="card-header form-inline ">
+
+            <h1 class="col-4">UPDATE {{ jardin.nom}}</h1>
+
+            <img alt=""  src="{#{{ asset('images/images.png') }}#}"  class="col-4"></div>
+
+            <br>
+        <div class="card-body">
+
+            {{ form_start(form) }}
+            {{ form_end(form) }}
+
+
+        </div>
+        <div class="card-footer">
+            {{ form_widget(form.update) }}
+
+            <a href="{{ path('mesjardin') }}" class="btn btn-flat btn-colored btn-theme-color-orange mt-15 mr-15">Annuler</a>
+            <a href="{{ path('deleteJ',{'id':jardin.id}) }}" class="btn btn-flat btn-colored btn-theme-color-red mt-15">Supprimer</a>
+
+        </div>
+    </div>
+
+    {% endfor %}
+
+
+
+
+
+{% endblock %}

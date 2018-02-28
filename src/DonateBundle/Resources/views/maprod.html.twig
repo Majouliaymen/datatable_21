@@ -1,0 +1,96 @@
+{% extends '::layout.html.twig' %}
+
+
+{% block content %}
+
+    <div style="min-height:500px;">
+{% if maprod == NULL %}
+       <center>
+
+           <strong > vous n'avez pas des donations </strong></center>
+    {% else %}
+    {% for maprod in maprod %}
+        <div class="col-xs-12 col-sm-3 col-md-3">
+            <article class="post clearfix mb-sm-30">
+                <div class="entry-header">
+                    <div class="post-thumb thumb">
+                        <img src="{{ asset(maprod.image) }}" alt="" class="img-responsive img-fullwidth">
+                    </div>
+                </div>
+                <div class="entry-content p-20 pr-10  bg-white">
+                    <div class="entry-meta media mt-0 no-bg no-border">
+                        <div class="entry-date media-left text-center flip bg-theme-color-green pt-5 pr-15 pb-5 pl-15">
+                            <ul>
+                                <li class="font-16 text-white font-weight-600 border-bottom">{{ maprod.datenow|date('Y') }}</li>
+                                <li class="font-12 text-white text-uppercase">{{ maprod.datenow|date('d-m') }}</li>
+                            </ul>
+                        </div>
+                        <div class="media-body pl-15">
+                            <div class="event-content pull-left flip">
+                                <h4 class="entry-title m-0 mt-5"><a class="text-theme-color-blue" href="#">{{ maprod.nom }}</a></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="mt-10"><strong>Description : </strong>{{ maprod.description }}
+                    </p>
+
+                    <p class="mt-10"><strong>genre : </strong>{{ maprod.genre }}
+                    </p>
+                    <p class="mt-10"><strong>catégorie : </strong>{{ maprod.categorie }}
+                    </p>
+
+
+                </div>
+                <div class="bg-theme-color-blue p-5 text-center pt-10 pb-10">
+                        <span class="mb-10 text-white mr-10 font-13"><a href="{{ path('updateD',{'id':maprod.id}) }}"> <img alt="" src="{{ asset('images/flat-color-icons-svg/services.svg') }}" width="30px" height="30px" title="modifier"><strong style="color: white">Modifier</strong></a></span>
+                    <span class="mb-10 text-white mr-10 font-13"><a href="{{ path('suppD',{'id':maprod.id}) }}"><img alt="" src="{{ asset('images/flat-color-icons-svg/full_trash.svg') }}" width="30px" height="30px" title="supprimer"><strong style="color: white">supprimer</strong></a></span>
+
+                </div>
+            </article>
+            <br>
+        </div>
+{% endfor %}
+        {% endif %}
+
+    </div>
+    {#
+
+        <div class="navigation  text-center" >
+            <strong style="color: red"> {{ knp_pagination_render(maprod) }}</strong>
+        </div>
+
+    #}
+
+{#<input id="nom" type="text" >
+
+    <div id ="div"></div>
+    <script src="{{ asset('jquery-3.2.1.min.js') }}"></script>
+    <script>
+        // jquery sous dossier web
+        $('#nom').keyup(function () {
+
+            //on va recuperer la valeur de l'input
+            var input=$('#nom').val();
+            $.ajax({
+                type:'post',
+                url:"{{ path('recherche_Ajax') }}",
+                data:{'nom=':input},
+                dataType:'json',
+                success:function (data) {
+                    console.log(data)
+                    $.each(data,function (i,e) {
+                        $('#div').append( " aaaaa"+e.adresse                                )
+
+
+
+
+                    })
+                }
+            });
+
+        })
+
+
+    </script>#}
+
+{% endblock %}

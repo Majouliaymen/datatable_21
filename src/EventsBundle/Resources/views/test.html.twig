@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+<h1>Recherche d'une athlète </h1>
+Rechercher: <input type="text" id="recherche">
+<h2> Liste des athlètes </h2>
+<div class="tableau">
+    <table border="1">
+        <tr style="color: #F5871F">
+            <td>iddddd</td>
+            <td>lib</td>
+            <td>pays</td>
+            <td>Date de naissance</td>
+            <td>Supprimer</td>
+        </tr>
+        {% for athlete in nom %}
+            <tr>
+                <td>{{ athlete.datedeb }}</td>
+                <td>{{ athlete.nom }}</td>
+                <td>{{ athlete.particiate }}</td>
+                <td>{{ athlete.adresse }}</td>
+
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+<script src="{{ asset('jquery-3.2.1.min.js') }}"></script>
+<script>
+
+
+    $(document).ready(function () {
+        $('#recherche').on('keyup', function () {
+            $search = $(this).val();
+            $.ajax({
+                url: "{{ path('_ajax') }}",
+                data: {'search': $search }
+            }).done(function (response) {
+                $('.tableau').html(response)
+            }).catch(function (err) {
+
+            });
+        });
+    });
+
+
+
+
+    {#$(function () {#}
+        {#var input = $('#recherche').val();#}
+        {#$("#recherche").keyup(function () {#}
+            {#$.ajax({#}
+                {#url: "{{ path('_recherche') }}",#}
+                {#data: {'nom=': input}#}
+            {#}).done(function (response) {#}
+                {#var tableau = $(response).find("table");#}
+                {#$('.tableau').empty();#}
+                {#$('.tableau').append(tableau);#}
+            {#});#}
+        {#});#}
+    {#})#}
+</script>
+</body>
+</html>

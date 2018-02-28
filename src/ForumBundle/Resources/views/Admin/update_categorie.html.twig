@@ -1,0 +1,49 @@
+{% extends 'layout.html.twig' %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('Forumassets/plugins/tag/tag.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('Forumassets/plugins/trumbowyg/ui/trumbowyg.css') }}">
+{% endblock %}
+{% block title %}modifier categorie{% endblock %}
+{% block content %}
+    <div class="main-container">
+        <div class="page-header">
+            <ol class="breadcrumb">
+                <li><a href="{{ path('consulter_forum') }}">Forum</a></li>
+                <li><a href="{{ path('gerer_categories') }}">gerer categories et sous categorie</a></li>
+                <li class="active">Modifier question</li>
+            </ol>
+        </div>
+        <div class="content-wrap panel">  <!--START: Content Wrap-->
+            {{ form_start(form_update , {'method':'POST'}) }}
+            {{ form_errors(form_update) }}
+            <div class="form-group">
+                <label for="titree">Titre</label>
+        {{ form_widget(form_update.nom ,{'value':categorie.nom ,'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-group">
+                <div>
+                    <ul>
+                        {% if categorie.type=='sous-categorie' %}
+                        <li><input type="radio" id="nv" name="categorie" value="nv"  /><label for="nv"><a>Nouveau categorie</a></label>
+                            {% endif %}
+                            {% set test=0 %}
+                            {% for categ in categories %}
+                                {% if categ.idCat == categorie %}{% set test=1 %}{% endif %}
+                            {% endfor %}
+                            {% for cat in categories %}
+                            {% if cat.type=='categorie' and test==0 %}
+                                <li><input type="radio" id="{{cat.id }}" name="categorie" value="{{ cat.id }}" {% if categorie.type=='sous-categorie' %}{% if categorie.idCat.id == cat.id  %}checked{% endif %}{% else %}{% if categorie.id == cat.id  %}checked{% endif %}{% endif %} /><label for="{{ cat.id }}">{{ cat.nom }}</label>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary col-lg-12">Mise à jour</button>
+
+            {{ form_end(form_update) }}
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+{% endblock %}

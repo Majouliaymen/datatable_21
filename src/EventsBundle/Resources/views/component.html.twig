@@ -1,0 +1,109 @@
+{#<table border="1">
+    <tr style="color: #F5871F">
+        <td>id4</td>
+        <td>lib</td>
+        <td>pays</td>
+        <td>Date de naissance</td>
+        <td>Supprimer</td>
+    </tr>
+    {% for event in events %}
+        <tr>
+            <td>{{ event.datedeb }}aaaa</td>
+            <td>{{ event.nom }}</td>
+            <td>{{ event.particiate }}</td>
+            <td>{{ event.adresse }}</td>
+
+        </tr>
+    {% endfor %}
+</table>#}
+
+<div class="container">
+
+    <div class="col"   >
+
+        <div id="touss">
+
+            <div class="r">
+                <div class="col-md-9 col-sm-7 col-xs-12 pull-right">
+                    <div class="row"  >
+
+                        {% for e in events %}
+
+
+
+                            <div class="col-md-4 col-sm-6 col-xs-12 block">
+
+                                <div class="thumbnail thumbnailContent">
+
+                                    <a href="#"><img src="{{ asset(e.image) }}"    width=300px" height="500px" alt="image" class="img-responsive"></a>
+                                    <div class="badge  bg-color-5">{{ e.type}}</div>
+
+                                    <div class="caption border-color-1">
+                                        <h3><a href="#" class="color-8" style="color: skyblue">{{ e.nom }}</a></h3>
+
+
+                                        <ul class="list-unstyled">
+                                            <li><i class="fa fa-calendar-o" aria-hidden="true"></i>de <strong> {{ e.datedeb }}</strong><br> à<strong> {{ e.datefin }}</strong></li>
+
+
+                                            {#
+                                                                                        <li><i class="fa fa-clock-o" aria-hidden="true"></i>{{ e.heuredeb|date('H:i') }}-{{ e.heurefin|date('H:i') }}</li>
+                                            #}
+
+                                        </ul>
+                                        <div><strong style="color: red" >   {{ e.adresse }}</strong>  </div>
+                                        <ul class="list-inline btn-yellow">
+                                            <li><a href="{{ path('participate',{'id':e.id}) }}" class="btn btn-primary "><i class="fa fa-anchor " aria-hidden="true"></i>Participer</a></li>
+
+                                            <i class="fa fa-users "> </i><div class="badge text-center " >{{ e.particiate }}</div>
+                                        </ul>
+
+                                        <a href="{{ path('detailE',{'id':e.id}) }}" class="btn btn-link"><i class="fa fa-angle-double-right color-4"   aria-hidden="true"></i> More</a>
+
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                        {% endfor %}
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+        {#----------------------------------#}
+
+
+
+      {#  <a href="#search" data-toggle="modal">   <div class="input-group">
+                <input type="text" placeholder="Click to Search" class="form-control search-input">
+                <span class="input-group-btn">
+  <button type="submit" class="btn search-button"><i class="fa fa-search"></i></button>
+  </span>
+            </div></a>#}
+
+
+
+    </div>
+
+
+
+    {#-----------------------#}
+
+
+
+
+
+
+
+    {#     <input type="radio" name="type"  value="payant">Payant<br>
+         <input type="radio" name="type" value="gratuit">Gratuit<br>#}
+
+
+
+</div>
