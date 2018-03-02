@@ -33,6 +33,7 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "knplabs/knp-paginator-bundle": "^2.7",
         "knplabs/knp-snappy-bundle": "^1.5",
+        "nomaya/social-bundle": "dev-master",
         "php-http/guzzle6-adapter": "^1.1",
         "php-http/httplug-bundle": "^1.8",
         "sensio/distribution-bundle": "^5.0.19",
